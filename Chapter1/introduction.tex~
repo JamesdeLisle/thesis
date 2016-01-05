@@ -1,0 +1,825 @@
+%%% Thesis Introduction --------------------------------------------------
+\chapter{Introduction}
+
+\ifpdf
+    \graphicspath{{Introduction/IntroductionFigs/PNG/}{Introduction/IntroductionFigs/PDF/}{Introduction/IntroductionFigs/}}
+\else
+    \graphicspath{{Introduction/IntroductionFigs/EPS/}{Introduction/IntroductionFigs/}}
+\fi
+
+\section{Introduction}
+
+Ever advancing developments in computational power have ushered renewed interest in the complex behaviour of the biological cell membrane and this coupled with ever increasing computation power, makes the lipid membrane and its interaction with other molecules ripe for development. 
+
+We approach our understanding of the cell membrane from a computational perspective. There is an ever increasing demand on the simulator to further refine, develop and simplify models to generate and reproduce growing experimental data. There are a number of camps that simulators can fall into, each with their relative merits, perhaps best exemplified by Figure \ref{fig:TempSpatialScales}.
+
+We approach the study of the systemic cell membrane from the coarse grain regime, enabling typically longer time and length scales than atomistic simulations, but not constrained to continuum models or lattice models, which would not typically encompass features such as self assembly. 
+
+There has been renewed interested in coarse grain models and we build on and apply some of these coarse graining techniques to further push the understanding of cell membranes.
+
+
+\begin{figure}[htbp]
+\begin{center}
+  \mbox{
+     \subfigure[]{{\includegraphics[width=3.0in, angle=-0]{ScaleCartoon/ScaleCartoon.png}}}
+       }
+   \caption{Biological two dimensional plot of temporal and spatial scales \citep{nielsen2004cgm}.}
+   \label{fig:TempSpatialScales}
+\end{center}
+\end{figure}
+
+
+\section{Biomembrane Introduction}
+
+Cell biomembranes are a diverse microcosm consisting of a variety of highly connected and dynamic agents including numerous lipids, sterols and proteins. The generic membrane (whether outer plasma membrane or protecting one of the organelles) performs a wide range of roles, including perhaps its evolutionary defined primary function of providing a protective, but flexible, and selectively permeable barrier to those processes occurring within the cytoplasm for example. The membrane provides the demarcation, defining cellular and multi-cellular lifeforms. 
+
+The membrane is not merely limited to barrier functionality. Cellular communication occurs by means of a number of mechanisms such as endocytosis and exocytosis (active transport) mediated by the lipid biomembrane and vesicles. Active transport may proceed by means of protein channels that selectively open and close and; fuelled by ATP, can drive molecules across the membrane. In contrast diffusion (passive transport) working by means of concentration gradients, requires no energetic input.
+
+Nature uses the universality of the plasma membrane in both prokaryotic and eukaryotic cells. Evolutionary studies conclude that the eukaryotic cell has lost the harder cell wall of the prokaryote and as a result this has opened up new adaptive possibilities for cells to engulf particles, for example. This and other such mechanisms have led to a system of internal membranes \citep{smith1999mte} and the structural complexity within the cell that we observe today.
+
+\subsection{Lipids}
+
+The name lipid derives from the Greek word \textit{lipos}, meaning fat. Lipids are divided into two groups: saponifiable and non-saponifiable. The term saponifiable is ascribed to lipids with an ester functional group, that can be hydrolyzed. The former group comprises both saturated and unsaturated fatty acids, whilst the latter group includes steroids and eicosanoids. Lipids comprise two fatty acid (hence the name) chains coupled with a carboxylic acid head-group. Unsaturated bonds are always in the \textit{CIS} configuration, within the membrane.
+
+The common property of lipids is their relative insolubility in water, due to their non-polar tail which leads to the formation of aggregate structures, for example planar membrane bilayers, vesicles and liposomes. The non-polar tails are hydrophobic, preferentially avoiding water, whilst the polar head groups are soluble in water. A number of typical fatty acids are depicted in Figure \ref{fig:fattyacidtails}. For example with oleic acid (18:1), one can observe the relative unsaturation along its length, given by the \textit{CIS}-bond along the chain. In naturally occurring lipids the carbon double bond is in the \textit{CIS} configuration. Palmitic acid is similar to stearic acid but with $16$ carbon atoms along its chain instead of $18$.
+
+%[Instant notes, chemistry for biologists]. 
+
+%Such a tail can exhibit a preferred conformation of 120 degrees as illustrated in figure \citep{gurr1972lbi} or a deviation/kink of 60 degrees [Lipid Biochemistry, An Introduction 5th Edition].
+
+The most abundant types of lipid are the phospholipids, a number of which are illustrated in Figure \ref{fig:lipid_varieties}. Phospholipid, as their name implies contain a phosphoric based head-group, and is the name commonly given to lipids such as \textit{DOPC} (Di-Oleoyl-Phosphatidyl-Choline) which comprise two (\textit{Di}) fatty acid chains of oleic acid tails joined to a choline headgroup. The naming convention given to lipids is that the first two letters of the abbreviated name refer to the tail type and the last two the head-type.
+
+The overall trend of the melting temperature of the membrane can be generally deduced from the tail length and the degree of saturation of the fatty acid tails. Observing the trend that saturated lipids (straight tails) are able to pack more tightly together compared to unsaturated lipids which cannot pack so closely, one could generalise melting temperature trends based upon the degree of saturation as is borne out by the experimental measurements in Table \ref{tbl:TmLipids}, where one can see the effect of temperature variation with acyl chain length and saturation. Typical membrane compositions are shown in Table \ref{tbl:Lipids_compositions} and areas per headgroup in \ref{tbl:Example_Areas_Lipid}. 
+
+\begin{figure}[htbp]
+\begin{center}
+\mbox{
+  \subfigure[Steric acid (18:0)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/stericacid_crop.png}}}
+     }
+\mbox{
+  \subfigure[Oleic acid (18:1)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/oleicacid_crop.png}}} 
+     }
+\mbox{
+  \subfigure[Linoleic acid (18:2)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/linoleicacid_crop.png}}}
+     }
+\mbox{
+  \subfigure[Linolenic acid (18:3)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/linolenicacid_crop.png}}}
+     }
+\label{fig:fattyacidtails}
+\caption{Chemical representation of common fatty acid tails, the (X:Y) numbers refer to the number of saturated bonds versus the number of unsaturated bonds in each fatty acid tail. (a) Steric acid (18:0), (b) Oleic acid (18:1), (c) Linoleic acid (18:2) and (d) Linolenic acid (18:3). Common to the fatty acids are the carboxylic acid headgroup. }
+\end{center}
+\end{figure}
+
+ \begin{figure}[htbp]
+    \begin{center}
+      \mbox{
+        \subfigure[DOPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/DOPC.png}}}
+           }
+       \mbox{
+         \subfigure[DPPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/DPPC.png}}} 
+           }
+       \mbox{
+         \subfigure[DLPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/DLPC.png}}}
+            }
+       \mbox{
+         \subfigure[POPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/POPC.png}}}
+         %\subfigure[DSPC lipid]{{\includegraphics[width=2.1in, angle=-0]{LipidStructures/DSPC.png}}}
+         }
+       \mbox{
+         \subfigure[DSPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/DSPC.png}}}
+%         \subfigure[Brain Sphingomyelin lipid]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/BrainSphingomyelin.png}}}
+         }
+       \mbox{
+         \subfigure[Brain Sphingomyelin]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/BrainSphingomyelin.png}}}
+       }
+       \mbox{
+         \subfigure[Cholesterol]{{\includegraphics[width=0.75in, angle=-0]{LipidStructures/cholesterol.png}}}
+       }
+       \caption{Chemical representation of a small selection of lipid. POPC comprises one unsaturated and one saturated tail. (a) DOPC, (b) DPPC, (c) DLPC, (d) POPC, (e) DSPC, (f) Brain Sphingomyelin and (g) Cholesterol. Molecule files taken from Avanti Polar lipids \citep{AvantiLipids} and imported into BKChem \citep{bkchem}}
+      \label{fig:lipid_varieties}
+    \end{center}
+  \end{figure}
+
+
+ \begin{figure}[htbp]
+    \begin{center}
+        \mbox{ 
+          \subfigure[DOPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/DOPC_space_filling.png}}} 
+          %\subfigure[DOPC (1,2-Dioleoyl-sn-Glycero-3-Phosphocholine)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/DOPC_space_filling.png}}} 
+        }
+       \mbox{
+          \subfigure[DPPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/DPPC_space_filling.png}}}
+          %\subfigure[DPPC (1,2-Dipalmitoyl-sn-Glycero-3-Phosphocholine)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/DPPC_space_filling.png}}}
+        }
+       \mbox{
+          \subfigure[DSPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/DSPC_space_filling.png}}} 
+          %\subfigure[DSPC (1,2-Distearoyl-sn-Glycero-3-Phosphocholine)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/DSPC_space_filling.png}}}
+        
+        }
+       \mbox{
+        \subfigure[DLPC]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/DLPC_space_filling.png}}}
+        %\subfigure[DLPC lipid (1,2-Dilauroyl-sn-Glycero-3-Phosphocholine)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/DLPC_space_filling.png}}}
+
+         }
+       \mbox{
+        %\subfigure[POPC lipid (1-Palmitoyl-2-Oleoyl-sn-Glycero-3-Phosphocholine)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/POPC_space_filling.png}}}
+        }
+      \mbox{
+        %\subfigure[Brain Sphingomyelin lipid ((2S,3R,4E)-2-acylaminooctadec-4-ene-3-hydroxy-1-Phosphocholine)]{{\includegraphics[width=2.5in, angle=-0]{LipidStructures/Sphingomyelin_space_filling.png}}}
+        \subfigure[Sphingomyelin]{{\includegraphics[width=1.5in, angle=-0]{LipidStructures/Sphingomyelin_space_filling.png}}}
+        }
+        \mbox{
+         \subfigure[Cholesterol]{{\includegraphics[width=0.75in, angle=-0]{LipidStructures/CHOL_space_filling.png}}}
+       }
+
+       \caption{Space filling representation of a selection of lipids. (a) DOPC (1,2 - Dioleoyl - sn - Glycero - 3 - Phosphocholine) (b) DPPC (1,2-Dipalmitoyl-sn-Glycero-3-Phosphocholine) (c) DSPC (1,2 - Distearoyl - sn - Glycero - 3 - Phosphocholine) (d) DLPC lipid (1,2-Dilauroyl-sn-Glycero-3-Phosphocholine), (e) Brain Sphingomyelin lipid ((2S, 3R, 4E) - 2-acylaminooctadec- 4- ene - 3 - hydroxy- 1 - Phosphocholine) and (f) Cholesterol.}
+      \label{fig:lipid_varieties_space_filling}
+    \end{center}
+  \end{figure}
+
+\begin{table}[htbp]
+\center
+\begin{tabular}{llllll}
+\hline
+Lipid Type & Tail structure & $Tm^{\circ}$  & Reference \\
+\hline
+\hline
+\textit{Saturated lipids} & & &\\
+\hline
+DLPC & 12:0 & -2 & [1],[2] \\
+DMPC & 14:0 & 23 & [1],[2] \\
+DPPC & 16:0 & 41 & [1],[2] \\
+Sphingomyelin & 16:0 & 41 & [1],[2] \\
+DSPC & 18:0 & 54.4 & [3] \\
+\hline
+\textit{Unsaturated lipids} & & & \\
+\hline
+DOPC & 18:1 & -22 & [1],[2] \\
+DOPE & 18:1 & -16 & [1],[2] \\
+DOPS & 18:1 & -7 & [1],[2] \\
+DOPG & 18:1 & -18 & [1],[2] \\
+Dilinoleoyl acid PC headgroup & 18:2 & -52 & [1],[2]   \\
+Dilinolenoyl acid PC headgroup & 18:3 & -60 & [1],[2]  \\
+Diarachidonic acid PC headgroup & 20:4 & -70 & [1],[2] \\
+\hline
+\label{tbl:TmLipids}
+\end{tabular}
+\caption{Experimentally determined main transition temperatures. Tail structure format [X:Y], where X refers to the number of carbon atoms and Y to the number un-saturated bonds. [1] \citep{keough1987dsc} ,[2] \citep{maulik1996nps} and [3] \citep{koynova1998pap}.}
+\end{table}
+
+% \begin{table}[htbp]
+% \center
+% \small
+% \begin{tabular}{llll}
+% \hline
+% Lipid & Area per lipid             & Temperature  & Reference \\
+%       & ${\rm{\AA}}^{2}$         & $^{\circ}$ C   &           \\
+% \hline
+% \hline
+% \textbf{Saturated}     & & & \\
+% \hline
+% DLPE (C12:0)  & 41.0 & 20 & \citep{nagle2000slb}     \\ 
+% DLPC (C12:0)  & 56.2 & 10 & \citep{petrache2000apl}  \\
+%               & 62.6 & 30 & \citep{petrache2000apl}  \\
+%               & 67.1 & 50 & \citep{petrache2000apl}  \\
+%               & 71.2 & 65 & \citep{petrache2000apl}  \\
+% DMPC (C14:0)  & 60.0 & 30 & \citep{petrache2000apl}  \\
+%               & 65.4 & 50 & \citep{petrache2000apl}  \\
+%               & 68.5 & 65 & \citep{petrache2000apl}  \\
+%               & 59.6 & 30 & \citep{nagle2000slb}     \\ 
+%               & 62 $\pm$ 2 & 50 & \citep{nagle1993alb} \\
+% DPPC (C16:0)  & 63.3 & 50 & \citep{petrache2000apl}  \\
+%               & 67.1 & 65 & \citep{petrache2000apl}  \\
+%               & 71.9 & 80 & \citep{petrache2000apl}  \\
+% \hline
+% DPPC (gel)    & 52.3 & 25 & \citep{lis1982mlc}      \\
+% DPPC (gel)    & 50.0 & 21 & \citep{janiak1979tac}   \\
+% DPPC (gel)    & 48.6 & 21 & \citep{Tardieu_1973}    \\
+% DPPC (gel)    & 47.9 & 20 & \citep{nagle1996xrs}    \\
+% DPPC (gel)    & 47.9 & 20 & \citep{nagle2000slb}    \\ 
+% DPPC (fluid)  & 71.2 & 50 & \citep{lis1982mlc}      \\
+% DPPC (fluid)  & 68.0 & 50 & \citep{janiak1979tac}   \\
+% DPPC (fluid)  & 68.1 & 50 & \citep{rand1989hfb}     \\
+% DPPC (fluid)  & 64.0 & 50 & \citep{nagle2000slb}    \\ 
+% \hline
+% DSPC (C18:0)  & 66.0 & 65 & \citep{petrache2000apl} \\
+%               & 70.1 & 80 & \citep{petrache2000apl} \\
+% DPPE (C16:0)  & 60.5 & 69 & \citep{petrache2000apl} \\
+%               & 64.4 & 85 & \citep{petrache2000apl} \\
+% \hline
+% \textbf{Unsaturated} & & & \\
+% \hline
+% DOPC (C18:1/0)& 82.0 & 25 & \citep{lis1982mlc}      \\
+% DOPC          & 70.0 &  2 & \citep{gruner1988xrd}   \\ 
+% DOPC          & 72.2 & 30 & \citep{nagle1996xrs}    \\
+% DOPC          & 72.1 & 25 & \citep{rand1989hfb}     \\
+% DOPC          & 72.5 & 30 & \citep{nagle2000slb}    \\ 
+% \hline
+% \end{tabular}
+% \label{tbl:Example_Areas_Lipid}
+% \caption{Lipid areas per molecule. Data are taken from a variety of sources. All at fluid phase unless otherwise noted.}
+% \end{table}
+
+\subsection{The membrane}
+
+The bilayer is one of the prototypical self assembled aggregate structures and of primary consideration within this thesis. Lipids arrange themselves into a bilayer, with their hydrophobic tails shielded from water and their hydrophilic heads exposed, forming what is known as two leaflets. Vesicles are another aggregate structure, but common to all structures formed is the shielding of the tails from water, which may result in two leaflets or monolayers. Illustrated in Figure \ref{fig:AlbertsSimpleMembraneCartoon} is a simple representation of a bilayer incorporating proteins. Lipids are able to rotate about their longitudinal axis and additionally are able to flip from one leaflet to the alternate opposite leaflet; however for many lipids the process rarely occurs, being energetically unfavourable.
+
+Key to the ability of the membrane to perform its complex array of functions, both known and putative, is the controllable semi-permeable nature of the membrane. Barrier functionality requires a flexible and selectively permeable layer. Self assembly provides a contiguous but flexible barrier that can be manipulated in numerous ways to allow communication across the membrane. Endocytosis and exocytosis rely on the self healing process of the membrane after budding or fusion of vesicles. The membrane bilayer behaves as a two dimensional fluid, where lipids can diffuse the length of a biological cell within a second \citep{alberts1994mbc}.
+
+Driving self-assembly is the amphiphilic nature of the lipids. Because of the exposure of hydrophobic (non-polar) tails of the lipids to water means that the solvent matrix tends to form a layered structure around the hydrophobic region. The structured water creates a region of high enthalpy due to the loss of potential hydrogen bonds that the water molecules can make. The corresponding decrease in entropy results in energetically unfavourable conditions. To minimise the energetics of the system, hydrophobic surfaces can cluster such that their surfaces exposed to water are minimised and hence the entropic favourability of the water can be restored \citep{rezus2007oiw}. A variety of other structures may self-assemble, as illustrated by Figure \ref{fig:MembraneVesicleMicelle}. The principle of self-assembly is an important concept to discuss, for much of the behaviour of the membrane originates from the facet of assembly of components without an explicit blue-print. There is no known genetic information which codes for aggregate structures (membranes, vesicles) for example. 
+
+At low temperatures, dry and hydrated lipids form crystalline structures. At higher temperatures (below the chain melting temperature), lipids may undergo a pre-transition to a gel state, which may take the form of $L_{\beta}$ or a tilted gel phase $L_{\beta'}$ \citep{cevc1993ph}.
+
+The underlying physics behind the pre-transition phases below the main transition temperature is the relative fluidity of the lipid head groups, but with the hydrocarbon tails remaining ordered. Furthermore pre-transitions are only considered possible if the lipid head groups are hydrophilic coupled with weak interchain packing \citep{cevc1993ph}. Three phases (two gel and one fluid) are illustrated in Figure \ref{fig:Simple_phases}. Some example membrane thickness are given in Table \ref{tbl:Example_Membrane_Thickness}.
+
+The individual components of the membranes and their relative composition dictate the complex features observed and the resulting behaviour of the global system. In this thesis we rely on the principles of self assembly and adjust the detail of the composite molecules (lipids, proteins, peptides and insurgent molecules) to get an understanding of phase separation, budding, poration and aggregation without resorting to explicit molecular detail.
+
+\begin{table}[htbp]
+\center
+\small
+\begin{tabular}{lllllll}
+\hline
+Lipid Type & Liver cell (PM) & RBC & Myelin & Mitochondrion & ER & E.Coli \\
+\hline
+\hline
+Cholesterol              &  17 & 23 & 22 & 3     & 6     & 0\\
+Phosphatidylethanolamine &  7  & 18 & 15 & 25    & 17    & 70\\
+Phosphatidylserine       &  4  & 7  & 9  & 2     & 5     & trace\\
+Phosphatidylcholine      &  24 & 17 & 10 & 39    & 40    & 0\\
+Sphingomyelin            &  19 & 18 & 8  & 0     & 5     & 0\\
+Glycolipids              &  7  & 3  & 28 & trace & trace & 0\\
+Others                   &  22 & 13 & 8  & 21    & 27    & 30\\
+\hline
+\end{tabular}
+\label{tbl:Lipids_compositions}
+\caption{Compositions (\%) of different cell membranes. PM (Plasma membrane), RBC (Red Blood Cell)\citep{alberts1994mbc} }
+\end{table}
+
+\begin{figure}[htbp]
+\begin{center}
+  \mbox{
+     \subfigure[]{{\includegraphics[width=3.2in, angle=-0]{MembraneCartoons/AlbertsSimpleMembraneCartoon.png}}}
+       }
+   \caption{Three dimensional biomembrane model incorporating proteins \citep{alberts1994mbc}.}
+   \label{fig:AlbertsSimpleMembraneCartoon}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+  \mbox{
+     \subfigure[]{{\includegraphics[width=1.7in, angle=-0]{MembraneCartoons/membrane_planar.png}}}
+     \subfigure[]{{\includegraphics[width=1.7in, angle=-0]{MembraneCartoons/vesicle.png}}}
+     \subfigure[]{{\includegraphics[width=1.7in, angle=-0]{MembraneCartoons/micelle.png}}}
+       }
+   \caption{Cross sections of planar lipid membrane bilayer (a), vesicle (b) and micelle (c). The hydrophilic polar head group is denoted by a coloured sphere and the hydrophobic tails by the squiggly lines.}
+   \label{fig:MembraneVesicleMicelle}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+  \mbox{
+     \subfigure[]{{\includegraphics[width=1.8in, angle=-0]{Phases/Cartoon_Membranes/fluid_phase.png}}}
+     \subfigure[]{{\includegraphics[width=1.8in, angle=-0]{Phases/Cartoon_Membranes/gel_phase.png}}}
+     \subfigure[]{{\includegraphics[width=1.8in, angle=-0]{Phases/Cartoon_Membranes/tilted_gel.png}}}
+     
+       }
+   \caption{Simulated phases: (a) $L_{\alpha}$, (b) $L_{\beta}$ and (c) $L_{\beta'}$.}
+   \label{fig:Simple_phases}
+\end{center}
+\end{figure}
+
+
+
+
+% \begin{table}[htbp]
+% \center
+% \small
+% \begin{tabular}{lllll}
+% \hline
+% 
+% Lipid        & $ K_{A} $       & Bilayer thickness & Temp  & Ref                  \\
+%              & $\rm{[mN/m]} $  & $\rm{[nm]}$                    & $\rm{^{\circ}C}$  &                                     \\
+% \hline
+% \hline
+% Saturated & & &                                                                                                    \\
+% \hline
+% DSPC (C18:0) & 235 $\pm$ 14 & 4.07 $\pm$ 0.06                  & 21            & \citep{rawicz2000ecl}             \\
+% DMPC (C14:0) & 234 $\pm$ 23 & 3.52 $\pm$ 0.06                  & 21            & \citep{rawicz2000ecl}             \\
+% %1,2-Ditridecanoyl-sn-Glycero-3-Phosphocholine (C13:0) & 239 $\pm$ 15 & 3.41 $\pm$ 0.05 & 21 & \citep{rawicz2000ecl}\\
+% 
+% \hline
+% Unsaturated & & & \\
+% DOPC (C18:1) & 265 $\pm$ 18 & 3.69 $\pm$ 0.04                  & 21            &           \citep{rawicz2000ecl}  \\
+% %1,2-Dierucoyl-sn-Glycero-3-Phosphocholine (C22:1) & 263 $\pm$ 10 & 4.31 $\pm$ 0.05 & 21 &  \citep{rawicz2000ecl}  \\ 
+% %1,2-Diarachidonoyl-sn-Glycero-3-Phosphocholine (C20:4) & 183 $\pm$ 8 & 3.44 $\pm$ 0.007 & 21 & \citep{rawicz2000ecl} \\
+% SOPC (C18:0/1) & 190 $\pm$ 20 & & 15 & \citep{needham1990eda}                                                     \\ 
+% \hline
+% \end{tabular}
+% \label{tbl:Example_Membrane_Thickness}
+% \caption{Area compressibility data of bilayers performed in the fluid phase from various sources.}
+% \end{table}
+
+\section{Membrane component organisation}
+
+The vast array and diversity of lipid species could imply a secondary functioning to account for the variety of components involved. Could this secondary artefact be partitioning of the membrane or phase separation? Mother Nature, ever parsimonious, leads us to beg the question what possible utility could be implied by segregation? 
+
+A great deal of research now points to the observation of lipid rafts or domains; patches of one species \textit{floating} within another. This is in contrast to the historically accepted fluid mosaic model proposed by Singer and Nicholson \citep{singer1972fms} of a homogeneous mix of agents. Proteins are now routinely labelled according to their partitioning properties, i.e. as raft proteins, with some proteins thought to facilitate nucleation of rafts. 
+
+%[Move...One of the greatest challenges for simulations is to reduce the complexity whilst still maintaining the salient features of the system. The sheer number of interacting agents within a typical membrane presents a great challenge for simulators.] 
+
+\subsection{Lipid rafts}
+
+Evidence now points to the fact that particular eukaryotic cell membranes exhibit domains or patches of sphingolipid/cholesterol rich areas. Eukaryotic cells comprise a wide array of lipid homologies, with a wide range of melting temperatures (\textit{Tm}). The archetype eukaryotic cell is composed of a number of sphingolipids with a high melting temperature and phospholipids, with lower melting temperatues. At biologically relevant temperatures of the cell, i.e. human body temperature of 37 Celsius, Sphingolipids exist in the liquid ordered phase, whilst DOPC (an unsaturated lipid) is in the liquid disordered regime.
+
+The lipid raft hypothesis has been floated over the years but it was not until perhaps 1988 when \cite{simons1988lse} published their work, that the field received new momentum and a new terminology for domains, lipid ``rafts''.
+
+Cholesterol and phospholipids can together form a liquid-ordered phase $L_{o}$ or $L_{\beta}$, which can co-exist with a liquid disordered phase $L_{d}$ or $L_{\alpha}$ with a relatively low level of cholesterol. These phases and an archetypal lipid raft are illustrated in Figure \ref{fig:Lipid_Raft_and_phases}. Phase co-existence is observed in wholly liquid membranes \citep{ipsen1987pep} and \citep{ipsen1989tta}. Cholesterol at the right concentration levels can transform a liquid disordered phase to a liquid ordered phase. Cholesterol, due to its flat rigid structure (Fig \ref{fig:lipid_varieties}) can impose conformational order on neighbouring lipids, resulting in the phase transition from a disordered to an ordered phase. The relative difference in lateral mobility between these two phases is considered to be around two to three times. For example, the lipid POPC (otherwise) fluid forms, a $L_{\beta}$ phase with cholesterol at high Mol fractions above $40 \%$ \citep{reyesmateo1995lcp}. 
+
+%Unsaturated lipids in the liquid disordered phase are able to be phase shifted from their original liquid disordered phase to the liquid ordered phase by the presence of cholesterol. The original phase of the lipid rafts (i.e. before cholesterol addition) is not considered important, but only the presence of a liquid ordered phase and a liquid disordered phase for phase separation. 
+
+Whether or not rafts form originally from unsaturated or saturated lipids is not considered important, but simply the phase of the compositions, i.e. that in order to form domains or rafts a liquid ordered and liquid disordered phase must be present \citep{simons2004msl}.
+
+The size and lifetime of the lipid raft is not well understood. For example domain sizes may depend on the composition of the membrane \citep{bagatolli2000cbl}. It has been suggested that domains up to $500\rm{nm}$ are possible in ternary systems of Dipalmitoyl-PC/Dilauroyl-PC/Cholesterol, visible by light microscopes \citep{feigenson2001tpd}. But for the most part lipid domains are considered too small to be observable by light microscopes, hence a variety of indirect techniques have been developed to visualize and characterise domains.
+
+%[Shift to more detailed section] Our model does not include any representation of cholesterol, so we rely on an implicit idea or integration of cholesterol, which is effectively wrapped up into the liquid ordered lipids. The properties of the rigid planar cholesterol are difficult if impossible to model with a bead spring model, and hence we focus purely on the separation of binary components. This does not necessarily cause problems, for binary systems also illustrate phase separation [End shift]. 
+
+Much of the prior research on phase separation concentrates on the mismatch between lipid chain lengths, the relative difference in acyl chain length. For example the coarse grain simulations by \citep{faller2004sdf} illustrate the phase separation between Dilauroyl-sn-Glycero-3-Phosphocholine (DLPC) and Distearoyl-sn-Glycero-3-Phosphocholine (DSPC); two lipids of different chain length. Differences in chain length need not be the sole driver of segregation as illustrated in phase separation in Giant Unilamellar Vesicles (GUVs) is observed by \cite{scherfeld2003lda} in ternary systems of Dioleoyl-sn-Glycero-3-Phosphocholine (DOPC) (C18:1) and DSPC (C18:0) and cholesterol. Figure \ref{fig:GUV_phase_separation} shows phase separation in a GUV of equimolar proportion of DSPC and DOPC, with the same tail length, and 20 mol $\%$ of cholesterol, observed by confocal microscopy. 
+
+Saturated and unsaturated binary mixtures are also shown to phase separate. DPPC (saturated) and DOPC (unsaturated) at equimolar concentrations phase separate as seen by fluorescence microscopy. The heterogeneity in GUVs is interpreted as domain formation. Thus in summary, a ternary system is not a pre-requisite \citep{dealmeida2007cld} for phase separation. 
+
+\begin{figure}[htbp]
+\begin{center}
+  \mbox{
+     %\subfigure[]{{\includegraphics[width=1.2in, angle=-0]{Phases/Cartoon_Membranes/fluid_phase.png}}}
+     %\subfigure[]{{\includegraphics[width=1.2in, angle=-0]{Phases/Cartoon_Membranes/gel_phase.png}}}
+     \subfigure[]{{\includegraphics[width=3.6in, angle=-0]{ExampleRaft/Raft_mol_med.png}}}
+     
+       }
+   \caption{Archetypal lipid raft comprising sphingolipids and cholesterol \citep{ExpertReviewsMolMed}.}
+   \label{fig:Lipid_Raft_and_phases}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \begin{center}
+      \mbox{
+        \subfigure[]{{\includegraphics[height=1.5in, angle=-0]{PriorStudies/PhaseSeparation/GUVs_Scherfeld.png}}}
+        \subfigure[]{{\includegraphics[height=1.5in, angle=-0]{PriorStudies/PhaseSeparation/GUVS_binary_DOPC_DPPC_flur.png}}}
+
+        }
+       \caption{Phase separation in Giant Unilamellar Vesicles (GUVs) (ternary and binary). (a) Confocal imaging of GUV comprised of DOPC and DSPC at 50 $\%$ mol fraction. Illustrated with $DiI-C_{18}$; the fluorescent marker, which selectively partitions into saturated domains \citep{scherfeld2003lda}. (b) Phase separation in a GUV of binary equimolar mix of DOPC/DPPC with Rhod-DE as the fluorescent marker \citep{dealmeida2007cld}.}
+      \label{fig:GUV_phase_separation}
+    \end{center}
+  \end{figure}
+
+\subsection{Domain visualization and characterisation}
+
+One of the early processes for discerning rafts is the detergent extraction methodology, which is commonly applied to this day. A detergent, typically non-ionic such as Triton X-100, is added to the membrane system. Dilution is then performed to construct a sucrose gradient, where layers of differing sucrose concentrations are built up with lower concentrations on top of higher concentrations to form a gradient. The system is then centrifuged, enabling molecules to move through the gradient until they reach their equilibrium gradient (at which point their density matches that of the surrounding sucrose). The gradients are then analysed for their composition. One pitfall of this system is that there is no universally agreed position of the DRM (Detergent Resistant Membrane) \citep{babiychuk2006bcd} gradient. The detergent extraction experiments are disruptive and completely destroy the system and for this reason other methods are desirable.
+
+The term DRM is so named from the remnant of (typically) sphingolipid rich domains left behind after the detergent extraction process \citep{brown1992sga}. Previous studies had indicated that Glycosylphosphatidylinositol (GPI) anchored proteins remain relatively insoluble with non-ionic detergents such as Triton-X-100 \citep{hooper1988ekm}. The GPI anchor is a glycolipid that provides bonding to proteins through the C-terminus of a protein. 
+
+%The fatty acid tails of the GPI complex provide the anchoring within the membrane. 
+
+The atomic force microscope (AFM) can be applied to image domains. Domains are routinely imaged using atomic force microscopy and can be simply deduced from the height difference typified between liquid ordered phases and liquid disordered phases (Figure \ref{fig:AFM_Lipid_Raft}).
+
+Fluorescence is one technique that could be considered minimally perturbing to the system. Preferentially binding molecules (marker dyes) are inserted into the membrane, which selectively partition into the liquid ordered ($L_{\beta}$) or liquid disordered phase ($L_{\alpha}$). Rhod-DOPE preferentially associates into the liquid disordered phase, and can be used to visualise the heterogeneity in a GUV (Giant Unilamellar Vesicle) binary system of DOPC/DPPC (Figure \ref{fig:GUV_phase_separation}).
+
+\begin{figure}[htbp]
+   \begin{center}
+     \mbox{
+      \subfigure[AFM height map]{{\includegraphics[height=1.5in, angle=-0]{PriorStudies/AFM_Raft_Height.png}}}      
+      \subfigure[AFM profile]{{\includegraphics[height=1.5in, angle=-0]{PriorStudies/AFM_Raft_Profile.png}}}
+        }
+     \caption{AFM images of an artificial bilayer illustrating lipid rafts. Imaged in tapping mode, the AFM height map enables easy delineation between the domain and non domain regions. Supported lipid bilayers composed of equimolar sphingomyelin, DOPC and cholesterol. The profile image illustrates the height difference between phases of 0.7nm, illustrated by the markers. Taken from \citep{garner2007scl}}
+    \label{fig:AFM_Lipid_Raft}
+  \end{center}
+\end{figure}
+
+\subsection{Phase behaviour}
+
+Phase transitions are signified by a discontinuous change of an order parameter. The Ehrenfest classification relies on the derivatives of the \textit{Gibbs} free energy. To illustrate, more clearly, a first order transition has a discontinuity in the first derivative of the Gibbs free energy. A second order transition has a discontinuity in the second derivative of the Gibbs free energy. For example a first order transition in an extensive system may occur with the discontinuities in the entropy or the volume. First order transitions are solid-liquid, solid-vapour and liquid-vapour changes. Therefore with respect to lipid membranes, we measure the first order transition corresponding to $T_{m}$; the main transition temperature.
+
+In binary mixtures with two melting temperatures, $T_{m_A}$ and $T_{m_B}$, a phase diagram can be constructed, in the temperature composition plane. Solidification from a liquid mixture, will generally result in a composition that differs from that in the liquid. Figure \ref{fig:Binary_Cartoon} plots the equilibrium between solid and liquid phase for an arbitrarily chosen Gibbs potential. The common tangent construction allows one to determine compositions of the two phases. Extrapolating these compositions, a phase diagram can be plotted with two lines, the solidus and the liquidus lines. Below the solidus line, the solid is stable and likewise above the liquidus line liquid is stable. 
+
+The phase diagram of temperature as a function of composition clearly illustrates that for a composition or purely species A, one can recover the melting temperature of the system $T_{m_A}$, and likewise for a system of pure B, the melting temperature $T_{m_B}$. At compositions between, one can interpret the phase diagram as follows: at a temperature, $T_{1}$; $ T_{m_A} < T_{1} < T_{m_B}$, extrapolating an isotherm, we intersect the solidus and the liquidus lines. The intersection corresponds to the compositions of liquid and that of the solid (respectively $X_{1L}$ and $X_{1S}$). Furthermore, we can imagine a quench at a particular composition $x_{1L}$ above the liquidus line onto the liquidus line at which point solid phase is formed of composition $x_{1S}$. At further quenching compositions of both $x_{1L}$ and $x_{1S}$ decrease as one follows the solidus and liquidus line. Hence interpreted as the fact that the solid and liquid phases are becoming richer in species B. 
+
+
+%This is a simple example to illustrate the basic principle of two component systems, however in reality the Gibbs free energies could be much more complex leading to more complicated phase diagram. One cannot often easily determine in reality such phase diagrams.
+
+ \begin{figure}[htbp]
+    \begin{center}
+      \mbox{
+        \subfigure[]{{\includegraphics[height=1.8in, angle=-0]{BinaryPhaseCartoon/CommonTangent.png}}}
+        \subfigure[]{{\includegraphics[height=1.8in, angle=-0]{BinaryPhaseCartoon/BinaryMix.png}}}
+        }
+       \caption{Binary mixtures. (a) Gibbs potentials plotted at Temperature $T_{1}$ along with the common tangent construction which corresponds to compositions $x_{L}$ and $x_{S}$. These compositions correspond to points on the liquidus and solidus line as indicated in (b), the phase diagram of the binary system. Figures adapted from \cite{adkins1983et}.}
+      \label{fig:Binary_Cartoon}
+    \end{center}
+  \end{figure}
+
+\subsection{Computational simulations of phase behaviour and separation}
+
+Lattice based models of lipid membranes have their basis in Ising type models, with models such as those by \cite{wallace2005kps} employing differing lipid species at each site. Lattice based lipid species include such factors as stretching and a mismatch. Each lipid at each cell in the lattice has a composite free energy associated with each of these properties. Lipids in the lattice can be moved according to the energetics of the system based on the Metropolis Monte Carlo algorithm \citep{Metropolis1953}. A hydrophobic mismatch between the lengths of the lipids is sufficient to induce phase separation (Figure \ref{fig:PhaseSepImagesPreviousStudies} (a)).
+
+An earlier Monte Carlo lattice based model by \cite{sugar1999mcs} illustrates phase separation of (Dimyristoyl-sn-Glycero-3-Phosphocholine/Distearoyl-sn-Glycero-3-Phosphocholine) DMPC/DSPC bilayers. They simulated at a range of mol fractions illustrating a continuous gel-fluid ($L_{\beta}-L_{\alpha}$) transition.
+
+One of the early molecular dynamics simulations with a more phenomenological model of lipids was performed by \citep{kox1980slm}, using the Lennard-Jones interaction potential. This model exhibited three key properties: (1) amphipathic molecules, (2) planar diffusion, (3) large scale behaviour solely dependent on short range repulsive and long range attractive forces. 
+
+Off lattice models by \cite{faller2004sdf} based on the Marrink model \citep{marrink2004} illustrate phase separation between (Distearoyl-sn-Glycero-3-Phosphocholine) DSPC (C18:0) and (Dilauroyl-sn-Glycero-3-Phosphocholine) DLPC (C12:0). There is clearly a mismatch between the two acyl lipid chains. Attempting to map to experimentally observed phase separation at 320K, they are not able simulate phase separation at equimolar concentrations, but non-equimolar concentrations show phase separation as determined from analysis of the radial distribution functions. 
+ 
+The model by \cite{cooke2005} illustrates the potential of off-lattice simulations to laterally phase separate (Figure \ref{fig:PhaseSepImagesPreviousStudies} (b)). \cite{cooke2005} use of four pair potential system employed a variable Lennard-Jones attractive well width to induce phase separation, using a single tail lipid. Another coarse grained off lattice phase separation model is that by \cite{illya2006} (Figure \ref{fig:PhaseSepImagesPreviousStudies} (c)). The model employs two tails, being somewhat more phenomologically relevant. They employ three bead types (interaction sites), head, tail and water in contrast to the two (head and tail) employed by \cite{cooke2005}. Recent papers by \cite{lenz2007ssa} and \cite{lenz2005scm} exhibits self assembly and rich phase behaviour. The model employs a phantom solvent that is relatively cheap to compute. 
+
+%Our aim has been to wholesale avoid solvent and for that reason we base out model on the work of \citep{cooke2005}. For the reasons that our simulations of small lipids (i.e. few beads per lipid) are cheap enough to perform without recourse to vast parallelization
+
+%The aim is to show phase separation with a computationally cheap off-lattice potential scheme and for that reason we avoid solvent interactions. Another pre-requisite is self assembly of the system. We aim to reduce the interaction sites per lipid, shortening the lipids, again reducing the computational overheads.
+
+
+%[Shift, shift to phase sep secMetropolis1953tion] The relative difference in their effective well width between two species is enough to induce phase separation in a binary mix of lipids, due to simple energetics. Whilst this is a useful illustrative idea to understand phase separation, the lipid homologies convey no information regarding structural information of the lipids themselves, such as the double bonds in the acyl chains, although saturated lipids would be expected to more closely pack and hence would imply the justification for the difference in the cohesive lengths. Granted that budding and phase separation has been illustrated by introduction of a different cross term, i.e. $\alpha\alpha = \beta\beta \not= \alpha\beta $, but there is no relative difference in the diffusive co-efficient between species. One of the stronger features of the model is the ommision of solvent, which facilitates faster computation. The self assembling model membrane is illustrated in figure \ref{fig:PhaseSepImagesPreviousStudies} along with the resulting membrane phase separated regions. The model does illustrate a good example of a simple self assembling membrane which exhibits phase behaviour. The single tail of the coarse lipid convery ease of computation along with the lack of solvent. Macroscopic membrane properties such as bending correspond well with experimental values. [/End shift]
+
+%By modification of the potentials of the lipid analogues phase separation has been induced, in addition the bending stiffness has been measured as a function of composition, which does indeed change illustrating that stiffness can indeed be altered by tail-tail interaction lengths. It is worth noting that the bending rigidities are high compared to that of typical membranes and correspond to values greater than that of brain sphingomyelin and cholesterol, in otherwords a very stiff membrane. One other draw back is that the model apparently does not self assemble into membranous or vesicle structures.
+
+
+
+%A recent paper by \citep{lenz2007ssa}, which was based in turn on an earlier paper by \citep{lenz2005scm}, exhibiting self assembly. The model illustrates rich phase behaviour, employing a phantomF solvent, that is relatively cheap to compute. Our aim has been to wholesale avoid solvent and for that reason we base out model on the work of \citep{cooke2005}. For the reasons that our simulations of small lipids (i.e. few beads per lipid) are cheap enough to perform without recourse to vast parallelization
+
+ \begin{figure}[htbp]
+    \begin{center}
+      \mbox{
+        \subfigure[Membrane phase separation from \cite{wallace2005kps}]{{\includegraphics[width=1.9in, angle=-0]{PriorStudies/WallacePhaseSep.png}}}
+        \subfigure[Vesicle phase separation from \cite{cooke2005}]{{\includegraphics[width=1.9in, angle=-0]{PriorStudies/DesernoPhaseSepVesicle.png}}}
+        \subfigure[Membrane phase separation \cite{illya2006}]{{\includegraphics[width=1.9in, angle=-0]{PriorStudies/IllyaPhaseSepMembrane.png}}}
+        }
+       \caption{Phase separation illustrated by a number of previous studies. (a) lattice based models, (b) fully off-lattice single tail, and (c) dual tail lipid representations.}
+      \label{fig:PhaseSepImagesPreviousStudies}
+    \end{center}
+  \end{figure}
+
+\subsection{Computational simulations of detergents and detergent membrane interactions}
+
+%Here we discuss the detergents individually and the interaction of detergents within the membrane.
+
+% %\subsubsection{Aims}
+% 
+% Frederica Schmit et al have outlined some of the main aims of research into amphiphiles
+% 
+% \begin{itemize}
+%  \item 
+% \end{itemize}
+
+Simulations of amphiphiles such as detergents and surfactants take much the same path as those of lipid membranes: atomic representations or with varying degrees of coarse graining. 
+
+%The key ingredients of the amphiphile systems are similar to that of lipid systems, in as much as the hydrophobic interaction drives the self-assembly process of multi component systems.
+
+%As with lipid simulations, atomistic simulations convey structural and dynamic information which can be compared to experimental data, however often lack phenomenological time scales and macroscopic behaviour such as self assembly, unlike coarse grained systems able to simulate self-assembly such as those performed by \citep{vongottberg1997sds}.
+
+
+
+Considering lattice based systems, perhaps one of the most notable models for non-ionic surfactants is that of \cite{larson1985mcs}. Amphiphilic molecules occupy chains of lattice sites whilst oil and water occupy single sites. Using this simulation framework approximate free energies can be calculated and one can determine phase diagrams for $H_{i}T_{j}$, where $H_{i}$ and $T_{j}$ correspond respectively to the number of hydrophobic and tail sites. One can calculate the size and shape distributions of the micelles. \cite{hashemianzadeh2007lmc} have extended the model to encompass a potential coupled to ionic interactions in their effort to understand ionic surfactants. The majority of lattice-type models typically include only nearest neighbour models. \cite{bernardes1996css} have illustrated the formation of vesicles from Larson-type lattice models.% shown in figure \ref{XX}
+
+Recent advances have seen the move to off-lattice simulations of the bead-spring form, where interaction sites are modelled as beads, and are sprung together with for example FENE (Finitely Extensible Non Elastic) bonds or quadratic potentials. One of the first models in the off-lattice area is that by \citep{smit1990ecl} which borrows on the work of \cite{gama1986aao} employing a generalized van der Waals theory for non-uniform molecular fluids. Using a Lennard Jones potential, \cite{vongottberg1997sds} demonstrated the self assembly of a bead-rod type system and depict differing CMC's as a function of temperature. %(see figure \ref{XX} ).
+
+%Biocides are of great interest for their obvious commercial relevance. They typically exhibit poor selective toxicity and hence for this reason differ greatly from antibiotic agents such as anti-microbial peptides, however a great deal is still unknown as to the mechanisms of interaction with bacterial cells. The putative antibacterial action include membrane disruption, macromolecule dysfunction, and metabolic inhibition \citep{denyer1998mad}. There are three considered interaction sites of biocides (dis-infectants): cell-wall, cyto-plasmic membrane and cytoplasm \citep{denyer1998mad}. 
+
+%Simulations of the aggregation of colloidal particles have been undertaken by \citep{orrite2005olm} where the aggregation size and distribution and resulting architecture of the aggregates have been analysed. They perform Monte-Carlo simulations utilizing square well potentials for the interactions between colloidal particles. They calculate the aggregate mass and mean square radius of gyration. \citep{derecskeikovacs1998alm} utilize a clustering algorithm for determining conformations of atomic simulations of the commonly employed detergent, Triton-X-100. 
+
+In work by \cite{groot2001msc} attempts have been made to understand what causes cell death when bacteria are exposed to non-ionic detergents via a mesoscopic model. They use a united atom DPD model for non-ionic surfactants of $C_{9}E_{8}$ at mole fraction up to ninety percent in a membrane of phospholipids to mimic that of the bacterial cell. Small transient holes are seen at low densities of 40 percent, tending to become permanent holes at mol fractions of 60 and 70 percent (Figure \ref{fig:Rupture_membrane}).
+
+  \begin{figure}[htbp]
+     \begin{center}
+       \mbox{
+         \subfigure[]{{\includegraphics[width=4.80in, angle=-0]{PriorStudies/Detergents/Groot_poreation.png}}}
+          }
+        \caption{Time sequence of rupture frames for lipid membrane and detergent, comprising 30\% $C_{12}E_{6}$/lipid bilayer, the timeframe between frames is defined as 1.2ns. Taken from \citep{groot2001msc}}
+       \label{fig:Rupture_membrane}
+     \end{center}
+   \end{figure}
+
+%With no electrostatics included, there is no current methodology to simulate anionic and cationic detergents. It would also make possible the development of techniques to study electroporation.
+
+% It is in these studies that we aim to look purely at membrane disruption events as potential mechanisms for the antibacterial action, hence the focus is on coarse-graining detergent monomers, their properties as a single phase such as aggregation size, and their properties in the membrane.
+
+Detergent interaction with membranes is not well understood. It is considered probable that individual detergents insert themselves into the membrane with their orientation normal to the membrane plane, the system then equilibrates by rapid flip-flopping of detergent into the opposite leaflet. Detergent micelles may interact with the membrane, resulting in lipid being taken up into the micelles and detergent monomers finding their way into the membrane. 
+
+%DOPC vesicles are seen to be slowly solubilized by SDS and dodecylmaltoside \citep{kraghhansen1998mds}.
+
+%Detergents that exhibit a rapid flip-flop will allow formation of micellar structures, simply because both leaflets are exposed to detergent monomers. 
+In summary there are two considered mechanisms of detergent interaction: \textit{transbilayer} and \textit{micellar} (Figure \ref{fig:Transbilayer_micellar}). In the first instance (transbilayer mechanism), we note that a non porous membrane, will be attacked by detergent from one-side only, but after permeation or disruption to the membrane, can be attacked by both sides. In this transbilayer case, monomeric detergents interact with a single leaflet and insert into the membrane perpendicularly (aligned with the lipids). Detergent monomers are then able to flip-flop to the opposite leaflet, leading to equilibration. Micellar structures that form within the membrane can also disrupt the membrane, exposing both leaflets to monomeric detergent (trans bilayer interaction).
+
+The micellar mechanism is considered a slow process as a result of the higher activation energies required for interaction compared to monomers. In the micellar interaction, detergent monomers within the micelle exchange and interact with lipids in vesicles or planar membranes (Figure \ref{fig:Transbilayer_micellar} (B)). Detergent micelles can uptake lipids from the exposed lipid membrane leaflet as seen in the case of interaction with SDS and dodecylmaltoside \citep{kraghhansen1998mds}, detergents which exhibit a slow flip-flop rate.
+
+Creating membrane permeation in a controllable way is an immense challenge for the fields of drug delivery and gene therapy \citep{sandre1999dtp}.  
+
+  \begin{figure}[htbp]
+     \begin{center}
+       \mbox{
+         \subfigure[]{{\includegraphics[width=4.50in, angle=-0]{PriorStudies/Detergents/Detergent_Membrane_action.png}}}
+         \nonumber
+          }
+        \caption{Two putative mechanisms of membrane/detergent interaction. (a) Equilibration of detergent monomers after insertion into one leaflet by flip-flopping. (b) Bound detergent disrupts the membrane, allowing pores to form exposing both monolayers to detergents. (c) Interaction of micelles with the lipid membrane. Solubilization proceeds by uptake of lipids into the detergent micelles and uptake of detergent monomers into the lipid membrane \citep{kraghhansen1998mds}.}
+       \label{fig:Transbilayer_micellar}
+     \end{center}
+   \end{figure}
+
+%Work by \citep{wang2005pnm} show that relatively simple models of coarse-grained membranes under mechanical conditions can exhibit poreation. The mechanics of the membrane are such that increasing the tension of the membrane tends to open up pores within the membrane. 
+
+%Of course poreation is of relevance to a great many fields including those of antibacterial discovery for example. Poreaction caused by the competition between surface tension and line tension leads to CNT theory. Normally to achieve poreation of membranes one requires an activated event such as an applied tension or electric field. Experimentally poreation in stretched vesicles has been mapped to theoretical work relating to the dynamics of pore-opening.
+
+%===================================================================================================================================
+% Detergent Intro Figures
+%===================================================================================================================================
+
+
+
+
+
+
+%===================================================================================================================================
+% Detergent Intro Figures
+%===================================================================================================================================
+
+
+\subsection{Computational simulations of proteins and peptides}
+
+%\subsection{Peptide introduction}
+
+Antimicrobial peptides (AMPs) present great promise for therapeutic advances. Native to many organisms, they selectively lyse bacterial cells and leave eukaryotic cells unaffected. They work by disrupting the membrane rather than interaction with protein targets \citep{lehrer1993daa}. The potential of AMPs as a therapeutic agent lies in their ability to combat bacterial infections, against a background of ever increasing bacterial resistance to traditional anti-bacterial pharmaceuticals \citep{fernandezlopez2001aab}. Their high efficacy has been illustrated in action against the lethal Methicillin-Resistant Staphylococcus aureus (MRSA) infections in mice. Although the exact mechanism of interaction and lysis of the membrane is not well understood, the selectivity between cell membrane types is thought to emerge from the difference in charge of the bacterial/eukaryotic lipid head groups as illustrated in Figure \ref{fig:PeptideInteractionMechanisms} (b). Here, zwitterionic head groups do not present an attractive binding surface compared to that of negatively charged (anionic) bacterial lipid head species with the insurgent positively charged (cationic) peptide \citep{zasloff2002apm}. 
+
+Various studies have mimicked the biological behaviour of these peptides with synthetic models; e.g. \cite{patch2003hpm} created molecules that mimic specifically the peptide magainin. The naturally occurring peptide magainin found in the skin of \textit{Xenopus laevis} is a 23 amino acid peptide which selectively lyses bacterial cell membranes. \cite{ludtke1996mpi} illustrate the emergence of pores caused by insurgent magainin, using neutron scattering to infer the presence of a toroidal pore (Figure \ref{fig:Barrel_stave_vs_Toroidal_pore_Carpeting_TiltBarrel} (b)), where the heads and lipids bend to create a toroidal pore, in contrast to another peptide, alamethicin, which forms the barrel-stave model of poreation (Figure \ref{fig:Barrel_stave_vs_Toroidal_pore_Carpeting_TiltBarrel} (a)).
+
+% Of key interest is the response of the peptide to its membrane environment. \cite{sanderson2005pli} has summarized the mechanisms by which peptide-lipid systems adapt to hydrophobic mismatch (Figure \ref{fig:PeptideInteractionMechanisms} (a)). The peptide tilt angle as a function of the hydrophobicity is calculated by \cite{kandasamy2006mds} (Figure \ref{fig:PeptideInteractionMechanisms} (b)).
+
+% Of interest is the interaction around the peptide, whether there is any degree of lipid disordering/ordering or tilting of the membrane, where the hydrophobic lengths of the peptide are in excess of the hydrophobic thicknesses of the membrane. However there is not clarity over which mechanisms occur.
+
+It is observed that the difference in pore formation between the two peptides alamethicin and magainin result from the differential preference of the peptides for the lipid head groups. Magainin is considered to bond more strongly to the lipid head groups leading to toroidal pores \citep{ludtke1996mpi}. The two pore forming schemes are exemplified by the study of Mellitin by \cite{yang2001bsm}, i.e. toroidal, barrel-stave and carpeting mechanisms \citep{shai1999} as illustrated in (Figure \ref{fig:Barrel_stave_vs_Toroidal_pore_Carpeting_TiltBarrel}). \cite{ladokhin2001dlp} have demonstrated detergent like behaviour of anionic membranes treated with the animicrobial melittin. They suggest that there is selectivity between anionic and phospholipid membranes, with the zwitterionic phospholipids susceptible to dissolution by melittin in comparison to vesicles comprised partly of anionic lipids. 
+
+
+%Another mechanism coming to the fore is the mode of lysis known as Boomerang, where there is a tilt angle with respect to the membrane normal, leading to pore formation, again by self association, as illustrated in \ref{fig:Barrel_stave_Toroidal_pore_Carpeting}. 
+
+Pandinin 2 (pin2), an antimicrobial peptide isolated from venom of the African scorpion, is an amphipathic alpha helix comprising around 18-19 amino acid residues \citep{nomura2004oap}. Within the membrane, the helical peptides are inclined at $45^{\circ}$ to the averaged peptide helical tilt axis. It is thought that the pore forms as a result of self association of the peptides, perhaps in the form of a twisted barrel oligomer (Figure \ref{fig:Barrel_stave_vs_Toroidal_pore_Carpeting_TiltBarrel}). 
+
+There is great promise in using simulations to understand the interaction between proteins and lipid matrices. Areas of interest broadly can include \textit{(1)} Modes and mechanisms of entry of proteins into membranes, \textit{(2)} The relative orientations, behaviour and interaction of single proteins with the lipid mix (comparison of peptides in solvent to that within the membrane) and lipid matrix in response to peptides, and \textit{(3)} Self association of peptides and mechanisms of membrane disruption.
+
+Peptides, even though small proteins, comprise a great many more atomic sites than lipids. Each amino acid residue that comprises the protein contains a few tens of atoms. Thus it makes computing large scale effects of the protein difficult, especially of large proteins and peptides. Self associating properties are particularly difficult to explore because of the long run times necessary with all-atom simulations.
+
+%[Summarise]
+
+Figure \ref{fig:PeptidePreviousStudies} illustrates coarse grained representations of peptides and proteins from \cite{nielsen2004cgm} and \cite{VenturoliThesis2004}. These CG peptides studies are informative upon co-operativity of the peptides, whereby a peptide drags a second into its wake, and after insertion they re-orient themselves. \cite{VenturoliThesis2004} has simulated a bead-type protein within a protein matrix and analysing the impact on the protein and the lipid matrix. A more detailed study of simulations of multiple peptides is considered in the Peptides chapter.
+
+
+%AMPs have been simulated by coarse grain techniques such as those implemented by \cite{nielsen2004cgm}, where they build an aryl-amide antimicrobial utilizing the fact that the positively charged sections of the peptide may be replaced with a choline interaction site, with the remaining interaction sites modelled with hydrophobic and hydrophilic interaction sites. They show that the peptide inserts into the membrane approximately parallel to the surface of the membrane. Co-operativity is illustrated where the insertion of a peptide drags a second peptide into its wake into the membrane (Figure \ref{fig:PeptidePreviousStudies} (b)). Eventually, after snorkeling into the membrane, peptides orient themselves parallel to the surface of the membrane. 
+
+%Work by \cite{VenturoliThesis2004} illustrates the hydrophobic mismatch properties that arise from placing a coarse grained protein into a coarse grained model membrane. Snapshots of the protein are illustrated in figure \ref{fig:PeptidePreviousStudies}, depicting a tilt. The protein model utilises beads of selected varieties, with consecutive strings of beads making up a cylindrical protein as illustrated in figure \ref{fig:PeptidePreviousStudies}. Additionally the varying thickness of the membrane matrix radially from centre of the peptide is calculated.
+
+
+
+
+% [Begin detail section to be moved to the peptide section]
+% 
+% The readily available systhesis of a whole host of designer peptides, makes the cross-over between experiment and simulation potentially fruitful, for actual peptides could be created from simulation results. Considering the relative hydrophobic mismatch between proteins and membranes, \cite{kandasamy2006mds} have employed molecular dynamics to investigate mismatch in model peptide systems. Here an atomistic system is employed for modelling three different lipids and three different KALP peptides. They illustrate features such as peptide tilt as function of hydrophobic mismatch.
+% 
+% [DEPLETION BOY!]
+% 
+% 
+% 
+% [Can \citep{milik1993ipc} demonstrates the changes in relative peptide orientation as a result of differing amino acid structure. Simulating adsorption of the peptide onto the membrane surface, its slightly disordered helix and subsequent insertion of melittin into the membrane, with the resulting orientation of the peptide perpendicular to the membrane surface.]
+% 
+% \cite{baumgartner1996iah} investigated the interaction of peptides within a lipid matrix. The relatively extensive protein model includes terms that account for the relative properties of the amino acid side chains. Using the Milik-Skolnick \citep{milik1993ipc} model, amino acids are considered as spheres of dimension $\sigma_{p}$. By monitoring the temporal evolution of the residues \cite{baumgartner1996iah} formation of a helical hair-pin. The model of the lipid membrane does not include any explicit representation of solvent but relies on constraining the lipids within a particular spatial region, achieved by tethering lipid heads to a flat surface. Lipids are composed of 5 beads, with head-groups tethered to a flat surface. The tether is modelled by an athermal potential, governed to be zero within a bead diameter of the flat surface and blowing up to infinity elsewhere. The simulation is performed in the NPT ensemble.
+% 
+% [End detail section]
+
+
+
+% with the Hamiltonian thus $ exp[-\beta P \Delta A + N_{L} log (1 + \frac{\Delta A}{A} )] $ where A is the frame area and $\Delta A$ the difference in frame area. Such an expression requires that all particles in the peridocialy displaced and accepted with the following acceptace ratio.
+
+%===================================================================================================================================
+% Begin CG Sims
+%===================================================================================================================================
+
+ \begin{figure}[htbp]
+    \begin{center}
+      \mbox{
+        \subfigure[]{{\includegraphics[height=2.7in, angle=-0]{PriorStudies/Peptides/CoarseGrainedPeptideRep_Nielsen.png}}}
+        \subfigure[]{{\includegraphics[height=2.7in, angle=-0]{PriorStudies/Peptides/Insertion_Nielsen.png}}}
+        \subfigure[]{{\includegraphics[height=2.7in, angle=-0]{PriorStudies/Proteins/Ventruoli.png}}}
+        %\subfigure[]{{\includegraphics[height=1.75in, angle=-0]{PriorStudies/Peptides/PeptideSelectivity.png}}}
+        }
+       \caption{Coarse-grained representations of anti-microbial peptides. (a) The coarse grain schema, where in the top view the hydrophobicity is illustrated by the degree of shading. The middle diagram is an atomistic representation, with the numbered circles corresponding to groups in the bottom coarse grain representation \citep{nielsen2004cgm}. (b) The insertion of coarse grain peptides from model (a) into the membrane, from top to bottom: Penetration, Co-operativity and Population of both leaflets. (c) Coarse-grained representation of a flexible generic protein (hydrophobic body with hydrophilic ring) within a coarse grained lipid matrix simulated using DPD technique \citep{venturoli2005ssp}.}
+      \label{fig:PeptidePreviousStudies}
+    \end{center}
+  \end{figure}
+
+%===================================================================================================================================
+% End CG AMPS
+%===================================================================================================================================
+
+%===================================================================================================================================
+% Start Mechanisms
+%===================================================================================================================================
+
+  \begin{figure}[htbp]
+     \begin{center}
+       \mbox{
+         \subfigure[]{{\includegraphics[width=2.5in, angle=-0]{PriorStudies/Peptides/Barrel_Stave.png}}}
+         \subfigure[]{{\includegraphics[width=2.5in, angle=-0]{PriorStudies/Peptides/Torroidal_Model.png}}}
+          }
+       \mbox{
+         \subfigure[]{{\includegraphics[width=2.5in, angle=-0]{PriorStudies/Peptides/Carpet_Mechanism.png}}}
+         \subfigure[]{{\includegraphics[width=2.5in, angle=-0]{PriorStudies/Peptides/TiltBarrel.png}}}
+         }
+        \caption{Possible pore formation and lysis mechanisms (peptides denoted by the red cylinders). (a) the barrel-stave mechanism, \citep{yang2001bsm} (b) the toroidal pore mechanism \citep{yang2001bsm}, (c) the carpeting method of membrane lysis \citep{shai1999} and (d) tilted barrel oligomer of Pin2 \citep{nomura2004oap}.}
+       \label{fig:Barrel_stave_vs_Toroidal_pore_Carpeting_TiltBarrel}
+     \end{center}
+   \end{figure}
+
+%===================================================================================================================================
+% End Mechanisms
+%===================================================================================================================================
+
+%===================================================================================================================================
+% Start Selectivity
+%===================================================================================================================================
+
+ \begin{figure}[htbp]
+    \begin{center}
+      \mbox{
+       
+        \subfigure[]{{\includegraphics[width=2.80in, angle=-0]{PriorStudies/Proteins/Sanderson.png}}}
+        \subfigure[]{{\includegraphics[width=2.80in, angle=-0]{PriorStudies/Peptides/PeptideSelectivity.png}}}
+         }
+       \caption{Shown in (a) mechanisms for peptide/lipid interaction. (b) putative peptide selectivity. Taken from \citep{sanderson2005pli} and \citep{zasloff2002apm} respectively.}
+      \label{fig:PeptideInteractionMechanisms}
+    \end{center}
+  \end{figure}
+
+%===================================================================================================================================
+% End Selectivity
+%===================================================================================================================================
+
+%===================================================================================================================================
+% Start Mismatch
+%===================================================================================================================================
+
+
+  \begin{figure}[htbp]
+     \begin{center}
+       \mbox{
+         \subfigure[]{{\includegraphics[width=2.2in, angle=-0]{PriorStudies/Proteins/LarsonSnapshot.png}}}
+         \subfigure[]{{\includegraphics[width=2.2in, angle=-0]{PriorStudies/Proteins/LarsonTilt.png}}}
+          }
+        \caption{Lipid membrane and alpha helix peptide interaction (a) Snapshot of coarse grained peptide, (b) tilt angle of peptide as a function of hydrophobic mismatch. Taken from \citep{kandasamy2006mds}}
+       \label{fig:ProteinPreviousStudies}
+     \end{center}
+   \end{figure}
+
+%===================================================================================================================================
+% End Mismatch
+%===================================================================================================================================
+
+
+\clearpage
+
+
+
+
+%\subsubsection{Pore-action}
+
+
+\section{Summary Aims and outline}
+
+%\subsection{Introduction}
+
+Some of the previous atomistic studies have highlighted the pitfalls in obtaining long run times due to their adherence to as much detail as possible. Such studies are unable to look effectively at macroscopic behaviour over longer timescales, due to the computational overheads of the microscopic detail. The over-arching theme of this Thesis is to explore macroscopic behaviour by exclusion of details that are not salient to the larger picture whilst retaining the essential physics. 
+
+The simulation environment we employ is Monte Carlo, chosen over MD, due to its speed of implementation. With Monte Carlo, one can chose arbitrary rules for the move-sets of the particles. Choosing move sets in this way can enable us to sample phase space more effectively, as we are not constrained to integrating Newton's Laws. The move-sets with Monte Carlo can be categorized as physical and non-physical. Particularly in lattice based simulations, molecules can be swapped with each other; an unphysical move, however within the scope of this work, move sets have been restricted to be physical, comprising rotational and displacement.
+
+% In summary the properties that concern coarse grained models are molecule geometries, representing differing tail types (saturated/unsaturated) , packing parameters and the degree of hydrophobicity. It is these that we tune to create the rich phase behaviour, illustrate membrane-detergent interactions, membrane-peptide, and self association of peptides within the lipid matrix.
+
+%Discussed below are overviews of the approaches taken to inception of membranes, detergents and peptide simulations.
+
+Below is an overview of the work, beginning with CG membrane modelling, progressing through CG detergents and finally peptides.
+
+\subsection{Membranes}
+
+%It is common within the simulation environment to include a solvent interaction, namely that of water, which may be coarse grained or explicit. There are a variety of coarse graining schemes for water. Water or solvent provides a volume constraint on the system \citep{cooke2005}. Solvent interaction is computationally expensive and thus for this reason a number of implicit solvent models have found traction, which wrap up solvent interactions into interaction potentials. In achieving our stated aims of reduced computational overheads, solvent is not explicitly calculated. However computationally less intensive, it does negate the ability to look at interactions that are mediated by the solvent, but putative macroscopic behaviour may not be affected greatly by the lack of solvent.
+
+We create a minimally intensive off-lattice model that describes real membrane behaviour and phase characteristics, that is able to self assemble. Three different phases: gel, tilted gel and fluid are observed and we illustrate phase transition points by numerous methodologies. 
+
+Previous models, such as that of \cite{cooke2005}, have relied on a $\chi$ type parameters to induce phase separation between differing lipid species. Taking a phenomological route, we illustrate more realistic interpretations of lipids, using an induced kink angle to generate phase separation in binary mixtures. The more realistic interpretation of the lipids display mechanical properties that are commensurate with real lipids, with membrane bending stiffness decreasing with the degree of unsaturation. Uniquely the model is minimal in that no solvent is present and the interaction potentials describing the model are relatively cheap to compute, with this approach enabling enhanced timescales. For the work involving membranes, coarse grained systems are simulated in fixed tension ensemble to replicate real membrane behaviour.
+
+ 
+
+
+
+%We aim to build a minimally computationally intensive off-lattice self assembling system, which exhibits realistic phase behaviour. Self assembly is a pre-requisite for undertaking any interaction or inclusions within the membrane. The mechanical properties of the membrane should also be comparable to experiment. 
+
+%Again the need to incorporate inclusions into the membrane places places requirements that the interaction of the components as a global entity should reproduce the bulk behaviour of real membranes, with bending rigidities roughly comparable.
+
+% \subsection{Phase Separation}
+% 
+% We aim to find which properties control phase behaviour and whether like experimentally observed membranes, it is possible to show quantitative and qualitative features comparable with experiment. Systems in the liquid ordered phase will behave quantifiably differently from those in the fluid (liquid disordered) phase. In order to look at phase separation and elucidate behaviour exhibited in lipid rafts, its necessary to reproduce two lipid moieties, one that forms gel in the bulk phase and one that forms a fluid phase in the bulk, hence the system should be flexible enough that these systems can be recreated. 
+% 
+% Lipids are comprised of two acyl chains, by implementing with a single tail of interaction sites, a reduction in computational intensity can be formed. Single tail, phase behaviour and phase separation.
+
+\subsection{Detergents}
+
+A series of detergents are designed based on differing packing parameters ($P_{p}$). The packing parameter is used is a distinguishing factor between detergent moeities. Desiged detergents exhibit a range of packing parameter and aggregate structures. Packing parameters are calculated for a range of detergents and their aggregate structures are studied. Micellar worms and spherical micelles are created, and their aggregate number ($Nagg$) calculated using a recursive clustering mechanism. These course grained detergents are analysed temporally, charting the evolution of self assembled structures, demonstrating the flexibility and adaptability of the clustering algorithms developed for this purpose.
+
+Detergent and lipid membrane interaction is studied by inserting detergents into a sole leaflet at a time, whilst maintaing the membrane and system at vanishing tension. Interaction is studied as a function of detergent packing parameter ($P_{p}$) and concentration. We present a two dimensional map of behaviours for budding and poration based on these two parameters: $P_{p}$ and concentration. We demonstrate the universality of an assay type approach to classify membrane events. Interestingly, poration is observed to occur at no membrane tension; in that the total surface tenion over both leaflets is zero. Budding is observed at zero surface tension with the propensity for micelles to bud off leading to lipid removal, resulting from phase separation. Detergent micelle interaction is simulated by placing pre-assembled detergent micelles in close proximity to the lipid membrane. 
+
+
+
+
+%Detergents analogous to lipids, are amphipathic exhibiting some of the same principles as lipids such as self assembly. Geometrical changes in the molecules, characterized by the packing parameter enable a variety of different aggregate forms, such as micelles and micellular worms. 
+
+%We study detergent properties by adjustment of geometrical changes of the detergent monomers and concentration. Self-assembly is central to the model, for reasons of interaction with membranes and out of plane events such as budding. We demonstrate and characterise the effects of budding and poreation in addition to the interaction of detergent micelles with lipid membranes, derived from an assay type study where detergents are inserted into an equilibrated membrane.
+
+\subsection{Amphipathic peptides}
+
+Various levels of coarse-graining peptides have been performed over the last few years. However to infer large scale behaviour such as self association, microscopic detail of the peptides may be forsaken for the larger time-scales obtainable. Thus the approach with the coarse graining of peptides is to reduce or eliminate the bonded interactions present within the peptide whilst preserving the amphipathic nature of the peptides, considered important for the antimicrobial effect.
+
+Peptides of a variety of amphipathic structures can be synthesized experimentally into a variety of lengths, differing hydrophobicities and amphipathic surfaces, and hence this makes the study of peptides with simulation so ameanable.
+
+% The main focus as far as the course graining picture goes is to reduce the microscopic complexity such that peptides are considered in terms of large scale properties such their length and degree of hydrophobicity. By eliminating the properties of the constituent amino acids, one can concentrate on the facets driving self association and the interaction of peptide and lipid membranes.
+
+We have uniquely coarse grained amphipathic peptides sympathetic to the simple bead-bead approach. Peptides, are modelled as stiff rods, preserving their amphipathic features. Such an approach conveys the benefits of not having to simulate bonded interactions, but preserves some microscopic features such as the arrangement of the amino acids which gives rise to antimicrobial and poration features of these peptides. We have assayed a range of length scales and hydrophic surface exposures, with a range of lengths from shorter than the membrane thickness to lengths greater than the membrane thickness. 
+
+Illustrating a clear dependence upon length and hydrophobic surface the assays illustrate the ability to tune the peptides positional and orientation behaviour, such that the peptide may be oriented such that its angle can range from perpendicular to the membrane to lying within the membrane plane. The importance of understanding orientation comes into its own when considering the type and form of membrane disruption event and this we postulate our approach as a methodology that may assist in the synthesis of effective anti-microbials.
+
+[Multiple peptides]
+
+%We have developed an approach, based on coarse graining peptides into a simple rod like moieties that preserve the amphipathic nature of the peptides, and affords us computational efficiency but does limit the information that can be obtained from the unfolded/folded states of the peptide. We assay the peptide in terms of length and hydrophobicity, illustrating, length and hydrophobicity dependence upon orientation and position within the membrane.
+
+\clearpage
+
+%===================================================================================================================================
+% Lipid properties tables start
+%===================================================================================================================================
+
+
+
+
+
+
+% \subsection{Experimental bending rigidities}
+% 
+% Listed in Table \ref{tbl:L5_grande_systems} are illustrative bending rigidities.
+
+% \begin{table}[htbp]
+% \center
+% \begin{tabular}{lll}
+% \hline
+% Membrane at $20-30^{\circ}$ Celcius  & $\kappa_{b}$ $[k_{B}T]$  & Reference \\
+% \hline
+% \hline
+% DOPC                 & 21                         &  \citep{rawicz2000ecl}  \\
+% \hline
+% DMPC                 & 14                         &  \citep{evans1990edt}   \\
+%                      & 29                         &  \citep{duwe1990bem}    \\
+%                      & 11                         &  \citep{zilker1992sae}  \\
+%                      & 33                         &  \citep{meleard1997bem} \\
+% \hline
+% Plasma Membrane      & 32                         &  \citep{evans1983bem}   \\
+%                      & 8-18                       &  \citep{duwe1990bem}    \\
+%                      & 35-108                     &  \citep{peterson1992tap}\\
+%                      & 5                          &  \citep{zilker1992sae}  \\
+%                      & 50                         &  \citep{hwang1997edl}   \\
+% \hline
+% RBC                  & 3-8                        &  \citep{brochard1975fsf}\\
+% \hline
+% DMPE                 & 0.7                        &  \citep{mutz1990brs}    \\
+% \hline
+% \end{tabular}
+% \label{tbl:Example}
+% \caption{Bending rigidities taken from \citep{boal2002}}
+% \end{table}
+
+%\subsection{Experimental lipid parameters}
+
+
+
+%===================================================================================================================================
+% Lipid properties tables end
+%===================================================================================================================================
+
+
+%====================================================================================================================================
+% Lipid details figures start
+%====================================================================================================================================
+
+
+
+%====================================================================================================================================
+% Lipid details figures end
+%====================================================================================================================================
+
+
+%%% ----------------------------------------------------------------------
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 

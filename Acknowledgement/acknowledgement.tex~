@@ -1,0 +1,23 @@
+% Thesis Acknowledgements ------------------------------------------------
+
+
+%\begin{acknowledgementslong} %uncommenting this line, gives a different acknowledgements heading
+\begin{acknowledgements}      %this creates the heading for the acknowlegments
+
+
+Prof. Peter Olmsted has been an inspiration throughout the research process. His unbridled enthusiasm is infectious, providing the momentum when mine has faltered. Prof. Nigel Hooper has provided undwindling support on biological matters, ensuring my non biological background does not overgeneralize when it comes to biological matters.
+
+Dr. Chinmay Das has given me insight into pushing the boundaries with simulation code and has provided valuable advice on computational techniques and analytical routines. Alan Real and Steven pickering from the White Rose Grid have been essential for advice on Parallel coding techniques and for their cluster support role, and I warmly appreciate their assistance. 
+
+Lastly I would like to thank all those from Physics/SOMS that have provided insightful and thoughtful advice, whether they be of a technical computing nature or in simply providing moral support.
+
+
+\end{acknowledgements}
+%\end{acknowledgmentslong}
+
+% ------------------------------------------------------------------------
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 

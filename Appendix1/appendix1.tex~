@@ -1,0 +1,140 @@
+\chapter{Appdendix A}
+
+Monte Carlo simulations may be run in a number of ensembles. Chief among those commonly used are the cannonical NVT ensemble - fixed in number of particles, volume and temperature. More phenomologically realistic is the NPT ensemble, fixed in pressure.
+
+\subsection{Random number generation}
+
+Ensuring ergodic simulation requires that the random numbers selected are as random as possible. Since computers (unless specially fitted with hardware random number generators) use psuedo random numbers, techniques are used to ensure that resulting stream of output random numbers are as random as possible. Assurance of a better stream and hence ergodic simulation is made by employing the computers in built algorithm coupled with a Our system implements the L'Ecuyer with Bays Durham shuffle \citet{NumericalRecipes} exhibiting long periodicity. The shuffle algorithm safeguards against any repeatability by shuffling the output stream of psuedo random numbers. The algorithm used is explained in more detail within Appendix A.
+
+\section{Efficiency}
+\subsection{Introduction}
+
+Clearly the greatest impediment to system size and molecular detail is the run-time of the simulation. Here we try to use a few techniques to speed up the simulation by improving the efficiency of the underlying algorithms. The fundamental limiation with monte-carlo is the calculation of the energies within a specified cut-off which must be calculated. However determining what interaction sites lie within this cut-off can be problematic. Two methodologies already exist for determining the minimum number of entities to be computed within the pairwise energy calculation, these are the Verlet list and Cell indexing technique. The verlet list maintains a list of all particles within a specified cut-off. Therefore having a small cut-off range can improve significantly the simulation run-time. 
+
+\subsection{Cell Index algorithm}
+
+The algorithm decomposes the simulation volume into cells, with each cell associated with an index of particles contained within the physical bounds of that cell. When calculating the pairwise energy upon a particle move it is necessary to calculate the number of blocks to pull in from the nearest cell neighbours.
+
+The cell index methodology obviates calculation of all particle interactions - namely $N^2$. Instead the computational overhead should scale approximately with N, the number of particles. Necessary book-keeping ensures that should a particle move cell, its position is suitably updated in the indexes at every particle move. Upon resizing of the simulation volume, all particles are re-indexed.
+
+Implementation of the cell index requires an index to specify what beads are in which cell as a function of that cell. Routines calculate which cells are needed to be included in the energy loop -i.e. the nearest neighbours. Periodic boundary conditions are also preserved - hence a cell at the 'edge' of the volume will see those cells on the opposite side of the simulation volume. The cell index method is often adopted in its linked list form \cite{FrenkelSmit2002} or with conventional arrays. The latter has been implemented. The algorithms employed are included within the appendix.
+
+The efficiency of the system is illustrated below in figure \ref{fig:CellIndexEff} with approximate scaling of simulation run-time as a function of N (number of lipids).
+
+\begin{figure}[htbp]
+%\includegraphics[width=5.0in, angle=-0]{/CellIndexEfficiency/CellEfficiency.png}
+\caption{Cell index efficiency. Comparison with full energy calculation of all particles, resulting in approximately $N^{2}$ energy evaluations compared with that actually needed to perform Hamiltonian evalutaion with the cell index methodology.}
+\label{fig:CellIndexEff}
+\end{figure} 
+
+\subsection{Parallel coding methodologies}
+
+In addition to other techniques to improve efficiency, parallel coding can be used to further reduce simulation run-time. Two main methodologies exist for parallel coding. One technique builds upon the cell index idea, where the system volume is divided into cells and each cell may be farmed to a processor and run effectively independtley. However one clear problem with this methodology is the information passing between the cell, when for example a particle crosses a boundary, recquiring necessary communication between processing cells. Since each processing cell only has information specific to that volume.
+
+To obviate the need for information passing and the MPI (message passing protocols), shared memory can be used as alterantive parallel framework. Here each processor has access to all the information about the particles or interaction sites within the complete simulation environment. However instead of perfoming a volume decomposition, the energy loop used to determine the Hamiltonian may be split between the available processors thus obviating the need to perform 'Halo swapping' where information needs to be passed between processing units.
+
+
+
+\section{Random Number Generator}
+
+The Bayes Durham Shuffle ensures that the psuedo random numbers used in the simulation are further shuffled, ensuring minimal correlation between subsequent random outputs \citep{NumericalRecipes}.
+
+\tiny
+\begin{verbatim}
+
+#define IM1 2147483563
+#define IM2 2147483399
+#define AM (1.0/IM1)
+#define IMM1 (IM1-1)
+#define IA1 40014
+#define IA2 40692
+
+#define IQ1 53668
+#define IQ2 52774
+
+#define IR1 12211
+#define IR2 3791
+#define NTAB 32
+#define NDIV (1+IMM1/NTAB)
+#define EPS 1.2e-7
+#define RNMX (1.0 - EPS)
+
+double ran2(long *idum)
+{
+  /*---------------------------------------------------*/
+  /* Minimum Standard Random Number Generator          */
+  /* Taken from Numerical recipies in C                */
+  /* Based on Park and Miller with Bays Durham Shuffle */
+  /* Coupled Schrage methods for extra periodicity     */
+  /* Always call with negative number to initialise    */
+  /*---------------------------------------------------*/	
+
+  int j;
+  long k;
+  static long idum2=123456789;
+  static long iy=0;
+  static long iv[NTAB];
+  double temp;
+
+  if (*idum <=0)
+  {
+    if (-(*idum) < 1)
+    {
+      *idum = 1;
+    }else
+    {
+      *idum = -(*idum);
+    }
+    idum2=(*idum);
+    for (j=NTAB+7;j>=0;j--)
+    {
+      k = (*idum)/IQ1;
+      *idum = IA1 *(*idum-k*IQ1) - IR1*k;
+      if (*idum < 0)
+      {
+        *idum += IM1;
+      }
+      if (j < NTAB)
+      {
+        iv[j] = *idum;
+      }
+    }
+    iy = iv[0];	
+  }
+  k = (*idum)/IQ1;
+  *idum = IA1*(*idum-k*IQ1) - IR1*k;
+  if (*idum < 0)
+  {
+    *idum += IM1;
+  }
+  k = (idum2)/IQ2;
+  idum2 = IA2*(idum2-k*IQ2) - IR2*k;
+  if (idum2 < 0)
+  {
+    idum2 += IM2;
+  }
+  j = iy/NDIV;
+  iy=iv[j] - idum2;
+  iv[j] = *idum;
+  if (iy < 1)
+  {
+    iy += IMM1;
+  }
+  if ((temp=AM*iy) > RNMX)
+  {
+    return RNMX;
+  }else
+  {
+    return temp;	
+  }
+}
+
+\end{verbatim}
+
+
+% ------------------------------------------------------------------------
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 
