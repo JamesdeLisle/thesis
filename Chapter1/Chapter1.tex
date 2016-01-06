@@ -11,25 +11,15 @@
 
 Defining and distinguishing phases of matter has been a continuing effort by physicists for many years. 
 
-\section{Free Fermion Systems}
+\section{1D Topological Superconductor}
 
-\subsection{Dirac Fermions}
-The basic constituent of fermionic systems is the Dirac fermion. In the language of quantum field theory, a Dirac fermion can be represented by a second quantised field operator $a$, called the annihilation operator, and its conjugate partner $a^{\da}_{i}$, called the creation operator. They obey the anticommutation relations $\{a,a^{\da}\}=1$ and $\{a^{(\da)},a^{(\da)}\}=0$. These operators act on a number state, also known as a Fock state, in the following way
+In order to illustrate the essential elements of a topological condensed matter system, we now present a construction and analysis of the simplest superconducting lattice model, the Kitaev wire \cite{Kitaev01}. 
+
+\subsection{Dirac fermions}
+
+Given $N\in\mathbb{N}^{+}$ Dirac fermions, hereby denoted simply as fermions, they can be represented by a set of second quantised fermionic field operators $\{a_{j}\}$ and their conjugate partners $\{a_{j}^{\da}\}$, where $j=1,...,N$. They obey the following commutation relations
 \begin{align}
-    &a\ket{0}=0 &a^{\da}\ket{0}=\ket{1}\nn\\
-    &a\ket{1}=\ket{0} &a^{\da}\ket{1}=0
-\end{align}
-
-\noi which follow from the commutation relations. A general state of a system consisting of a single Dirac fermion can be written in the form 
-\begin{equation}
-    \ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1},
-\end{equation}
-
-\noi where $\alpha_{0},\alpha_{1}\in\mathbb{C}$.\\
-
-Given $N\in\mathbb{N}^{+}$ Dirac fermions, they can be represented by a set of second quantised fermionic field operators $\{a_{i}\}$ and their conjugate partners $\{a_{i}^{\da}\}$, where $i=1,...,N$. They obey the following commutation relations
-\begin{align}
-    &\{a_{i},a_{j}^{\da}\}=\delta_{ij} &\{a_{i}^{(\da)},a_{j}^{(\da)}\}
+    &\{a_{i},a_{j}^{\da}\}=\delta_{ij} &\{a_{i}^{(\da)},a_{j}^{(\da)}\}=0
 \end{align}
     
 \noi where $\delta_{ij}$ Kronercker delta function. These operators act on a tensor product of Fock states. A general state of the fermionic system, $\ket{\psi}$ can be written as
@@ -39,9 +29,59 @@ Given $N\in\mathbb{N}^{+}$ Dirac fermions, they can be represented by a set of s
 
 \noi where $\alpha_{n_{1},...,n_{N}}\in\mathbb{C}$ and
 \begin{equation}
-    \bigotimes_{i=1}^{N}\ket{n_{i}}=\Bigg(\bigotimes_{i=1}^{N}\big(a^{\da}_{i}\big)^{n_{i}}\Bigg)\Bigg(\bigotimes_{i=1}^{N}\ket{0}\Bigg).
+    \bigotimes_{j=1}^{N}\ket{n_{j}}=\Bigg(\bigotimes_{j=1}^{N}\big(a^{\da}_{j}\big)^{n_{j}}\Bigg)\Bigg(\bigotimes_{j=1}^{N}\ket{0}\Bigg).
 \end{equation}
 
-\subsection{Quadratic Hamiltonians}
+\subsection{Real space tight-binding model}
 
+\begin{figure}
+    \begin{center}
+        \includegraphics[scale=0.65]{Chapter1/Chapter1Figs/PDF/1DSUPCHAIN}
+    \end{center}
+    \caption{A schematic representation of the Kitaev 1D wire. A set of $N$ sites denoted by the black dots and indexed by $j=1,..,N$ are connected by black lines. To each site we associate a fermion $a_{j}$ to which we associate a chemical potential $\mu\in\mathbb{R}$. We allow for fermions to tunnel to adjacent sites with amplitude $t\in\mathbb{R}$ and pair with adjacent fermions with amplitude $\Delta\in\mathbb{R}$ }
+    \label{fig:1DSUPCHAIN}
+\end{figure}
 
+We take a chain of $N$ sites indexed by $j=1,...,N$ and to each site we associate a fermion $a_{j}$. To each fermion we associate the same chemical potential $\mu$ and we allow for nearest neighbour tunnelling and pairing with amplitudes $t$ and $\Delta$ respectively, with $\mu,t,\Delta\in\mathbb{R}$. This arrangement is shown in fig. \ref{fig:1DSUPCHAIN}. With this information we can write down a tight binding Hamiltonian
+\begin{equation}\label{eqn:KITHAM}
+    H = \sum_{j=1}^{N}\Big(\mu a_{j}^{\da}a_{j}-\frac{1}{2} + t a_{j}^{\da}a_{j+1} + \Delta a_{j}a_{j+1}\Big) + h.c.,
+\end{equation}
+
+\noi where $h.c.$ denotes the Hermitian conjugate. We have chosen periodic boundary conditions such that $N+1$ is $1$.
+
+\subsection{Momentum space and the Fourier tansform}
+
+Because \eqref{eqn:KITHAM} is translationally invariant and has preiodic boundary conditions, we can transform it into momentum space via the Fourier transform. The transformation is defined as
+\begin{align}
+    &a_{j}=\sum_{p}e^{ipj}a_{p} &a_{j}^{\da}=\sum_{p}e^{-ipj}a^{\da}_{p},
+\end{align}
+
+\noi where $p\in[-\pi,\pi)$. The transformed Hamiltonian is written as
+\begin{equation}
+    H = \sum_{p} \big(\mu + t\cos(p)\big)\Big(a_{p}^{\da}a_{p} -a_{-p}a_{-p}^{\da}\Big) + i\Delta\sin(p)\Big(a_{p}a_{-p} - a_{-p}^{\da}a_{p}^{\da}\Big).
+\end{equation}
+
+We can now write the Hamiltonian in Bogoliubov-de Gennes form 
+\begin{equation}
+    H = \sum_{p}\bs{\psi}_{p}^{\da}h(p)\bs{\psi}_{p},
+\end{equation}
+
+\noi where $\bs{\psi}_{p}=\bpm a_{p} & a_{-p}^{\da}  \epm ^{\text{T}}$ and $h(p)$ is a $2\times2$ Hermitian matrix given by
+\begin{equation}\label{eqn:KITKERN}
+    h(p) = \bpm \epsilon(p) & \Xi(p) \\ \Xi^{*}(p) & -\epsilon(p) \epm
+\end{equation}
+
+\noi where $\epsilon(p)=\mu+t\cos(p)$ and $\Xi(p)=i\Delta\sin(p)$. We shall call $h(p)$ the \emph{kernel Hamiltonian}. From the kernal Hamiltonian we can extract many useful quantities such as the energy spectrum and the model's topological invariant, the winding number.
+
+\subsection{Symmetries}
+
+Free fermionic models can be classified by the symmetries of the kernel Hamiltonian \cite{Ryu10,Wen12,Schnyder08}. The presence (or not) of time-reversal (TR), particle-hole (PH) and sublattice (S) symmetries determines which of 10 classes a given Hamiltonian is in. More shall be said of the so called 10-fold way later in this document. The model as it stands obeys both TR and PH symmetries and by implication S symmetry.  
+
+\subsection{Energy Spectrum and ground state}
+
+The model supports a pair of eigenvalues and eigenvectors. As the model is PH symmetric the spectrum will be symmetric about zero energy. This is confirmed when we look at the analytic expression for the eigenvalues of \eqref{eqn:KITKERN}, 
+\begin{equation}
+    E^{\pm}(p)=\pm\sqrt{|\epsilon(p)|^{2} + |\Xi(p)|^{2}}.
+\end{equation}
+
+\noi We define the \emph{energy gap}, denoted $\Delta E$, as $\Delta E=\text{min}_{p}|E^{+}(p)|-\text{min}_{p}|E^{-}(p)|=2\cdot\text{min}_{p}|E^{+}(p)|$

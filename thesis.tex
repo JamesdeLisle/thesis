@@ -9,7 +9,7 @@
     \pdfinfo { /Title  (My Thesis)
                /Creator (TeX)
                /Producer (pdfTeX)
-               /Author (Joe Science JoeScience@leeds.ac.uk)
+               /Author (James de Lisle james@delisle.co.uk)
                /CreationDate (D:)  %format D:YYYYMMDDhhmmss
                /ModDate (D:20030815213532)
                /Subject (My PhD)
@@ -20,7 +20,7 @@
 
 \title{My Thesis}
 \ifpdf
-  \author{\href{mailto:JoeScience@leeds.ac.uk}{Joe Science}}
+  \author{\href{mailto:james@delisle.co.uk}{James de Lisle}}
   \crest{\includegraphics[width=54mm]{Leeds_Crest.png}}
   \collegeordept{\href{http://physics.leeds.ac.uk}{Department of Physics and Astronomy}}
   \university{\href{http://www.leeds.ac.uk}{University of Leeds}}
@@ -41,7 +41,7 @@
 \usepackage{StyleFiles/watermark}
 \usepackage{amsmath}
 \usepackage{braket}
-
+\usepackage[font=small,labelfont=bf]{caption}
 
 \begin{document}
 %\language{english}
@@ -73,12 +73,12 @@
 
 
 \appendix
-\include{Appendix1/Appendix1}
+%\include{Appendix1/Appendix1}
 %\include{Appendix2/Appendix2}
 %. More appendicies here.
 
-\bibliographystyle{Classes/jmb} % bibliography style
-\renewcommand{\bibname}{References} 
+\bibliographystyle{Classes/prs} % bibliography style
+\renewcommand{\bibname}{Bibliography} 
 \bibliography{References/references} % References file
 \addcontentsline{toc}{chapter}{References} % Adds References to contents page
 

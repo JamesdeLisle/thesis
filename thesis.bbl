@@ -1,14 +1,17 @@
-\begin{thebibliography}{2}
-\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\begin{thebibliography}{1}
 
-\bibitem[{Nielsen {\em et~al.\/}(2004)Nielsen, Lopez, Srinivas \&
-  Klein}]{nielsen2004cgm}
-{\sc Nielsen, S., Lopez, C., Srinivas, G. \& Klein, M.} (2004). {Coarse grain
-  models and the computer simulation of soft materials}. {\em J. Phys. Condens.
-  Matter\/}, {\bf 16}, R481--R512.
+\bibitem{Kitaev01}
+A.~Y. Kitaev, Physics-Uspekhi {\bf 44},  131  (2001).
 
-\bibitem[{Press {\em et~al.\/}(1992)}]{NumericalRecipes}
-{\sc Press, W. {\em et~al.\/}} (1992). {\em {Numerical recipes in C}\/}.
-  Cambridge University Press Cambridge.
+\bibitem{Ryu10}
+S. Ryu, A.~P. Schnyder, A. Furusaki, and A.~W.~W. Ludwig, New Journal of
+  Physics {\bf 12},  065010  (2010).
+
+\bibitem{Wen12}
+X.-G. Wen, Phys. Rev. B {\bf 85},  085103  (2012).
+
+\bibitem{Schnyder08}
+A.~P. Schnyder, S. Ryu, A. Furusaki, and A.~W.~W. Ludwig, Phys. Rev. B {\bf
+  78},  195125  (2008).
 
 \end{thebibliography}

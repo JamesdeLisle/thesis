@@ -1,4 +1,4 @@
 \select@language {english}
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces A schematic representation of the Kitaev 1D wire. A set of $N$ sites denoted by the black dots and indexed by $j=1,..,N$ are connected by black lines. To each site we associate a fermion $a_{j}$ to which we associate a chemical potential $\mu \in \mathbb {R}$. We allow for fermions to tunnel to adjacent sites with amplitude $t\in \mathbb {R}$ and pair with adjacent fermions with amplitude $\Delta \in \mathbb {R}$ \relax }}{2}{figure.caption.4}
 \addvspace {10\p@ }

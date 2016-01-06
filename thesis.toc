@@ -1,12 +1,13 @@
 \select@language {english}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Free Fermion Systems}{1}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Dirac Fermions}{1}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Quadratic Hamiltonians}{2}{subsection.1.2.2}
-\contentsline {chapter}{\numberline {2}Decomposition of the Chern Number}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Introduction}{3}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Background}{3}{subsection.2.1.1}
-\contentsline {chapter}{\numberline {A}Code samples}{4}{appendix.A}
-\contentsline {section}{\numberline {A.1}Random Number Generator}{4}{section.A.1}
-\contentsline {chapter}{References}{7}{appendix*.3}
+\contentsline {section}{\numberline {1.2}1D Topological Superconductor}{1}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Dirac fermions}{1}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Real space tight-binding model}{2}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Momentum space and the Fourier tansform}{2}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Symmetries}{3}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Energy Spectrum and ground state}{3}{subsection.1.2.5}
+\contentsline {chapter}{\numberline {2}Decomposition of the Chern Number}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}The Chern Number}{5}{subsection.2.1.1}
+\contentsline {chapter}{References}{6}{appendix*.5}

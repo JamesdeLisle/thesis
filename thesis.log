@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.3)  6 JAN 2016 14:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.3)  6 JAN 2016 17:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -119,13 +119,6 @@ Package footmisc Info: Declaring symbol style lamport* on input line 903.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 .
 )
-(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip52
-\bibsep=\skip53
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count92
-)
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
@@ -135,23 +128,23 @@ Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip54
-\subfigcapskip=\skip55
+\subfigtopskip=\skip52
+\subfigcapskip=\skip53
 \subfigcaptopadj=\dimen105
-\subfigbottomskip=\skip56
+\subfigbottomskip=\skip54
 \subfigcapmargin=\dimen106
-\subfiglabelskip=\skip57
-\c@subfigure=\count93
-\c@lofdepth=\count94
-\c@subtable=\count95
-\c@lotdepth=\count96
+\subfiglabelskip=\skip55
+\c@subfigure=\count92
+\c@lofdepth=\count93
+\c@subtable=\count94
+\c@lotdepth=\count95
 
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
 (/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg)
-\subfig@top=\skip58
-\subfig@bottom=\skip59
+\subfig@top=\skip56
+\subfig@bottom=\skip57
 )
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
@@ -214,13 +207,13 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen107
-\Hy@linkcounter=\count97
-\Hy@pagecounter=\count98
+\Hy@linkcounter=\count96
+\Hy@pagecounter=\count97
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count99
+\Hy@SavedSpaceFactor=\count98
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -263,7 +256,7 @@ Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 ))
-\c@Hy@tempcnt=\count100
+\c@Hy@tempcnt=\count99
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
@@ -271,7 +264,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen108
-\Fld@menulength=\count101
+\Fld@menulength=\count100
 \Field@Width=\dimen109
 \Fld@charsize=\dimen110
 Package hyperref Info: Hyper figures ON on input line 6293.
@@ -283,18 +276,18 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count102
-\c@Item=\count103
-\c@Hfootnote=\count104
+\Hy@abspage=\count101
+\c@Item=\count102
+\c@Hfootnote=\count103
 )
 
 Package hyperref Message: Driver: hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count105
-\c@bookmark@seq@number=\count106
-\Hy@SectionHShift=\skip60
+\Fld@listcount=\count104
+\c@bookmark@seq@number=\count105
+\Hy@SectionHShift=\skip58
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -310,7 +303,7 @@ Package: StyleFiles/watermark 2002/01/29 v1.00 Watermarks (NCC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
-\@mathmargin=\skip61
+\@mathmargin=\skip59
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -328,13 +321,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count107
+\inf@bad=\count106
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count108
-\leftroot@=\count109
+\uproot@=\count107
+\leftroot@=\count108
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count110
-\DOTSCASE@=\count111
+\classnum@=\count109
+\DOTSCASE@=\count110
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
@@ -343,15 +336,15 @@ LaTeX Info: Redefining \cdots on input line 466.
 \big@size=\dimen115
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count112
-\c@MaxMatrixCols=\count113
+\macc@depth=\count111
+\c@MaxMatrixCols=\count112
 \dotsspace@=\muskip11
-\c@parentequation=\count114
-\dspbrk@lvl=\count115
+\c@parentequation=\count113
+\dspbrk@lvl=\count114
 \tag@help=\toks18
-\row@=\count116
-\column@=\count117
-\maxfields@=\count118
+\row@=\count115
+\column@=\count116
+\maxfields@=\count117
 \andhelp@=\toks19
 \eqnshift@=\dimen116
 \alignsep@=\dimen117
@@ -360,17 +353,34 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \totwidth@=\dimen120
 \lineht@=\dimen121
 \@envbody=\toks20
-\multlinegap=\skip62
-\multlinetaggap=\skip63
+\multlinegap=\skip60
+\multlinetaggap=\skip61
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/braket/braket.sty) (./thesis.aux
+(/usr/share/texlive/texmf-dist/tex/latex/braket/braket.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen122
+\captionmargin@=\dimen123
+\captionwidth=\dimen124
+\caption@tempdima=\dimen125
+\caption@indent=\dimen126
+\caption@parindent=\dimen127
+\caption@hangindent=\dimen128
+)
+\c@ContinuedFloat=\count118
+Package caption Info: hyperref package is loaded.
+Package caption Info: subfigure package is loaded.
+) (./thesis.aux
 (./Dedication/dedication.aux) (./Acknowledgement/acknowledgement.aux)
 (./Abstract/abstract.aux) (./Abbreviations/Abbreviations.aux)
-(./Chapter1/Chapter1.aux) (./Chapter2/Chapter2.aux) (./Appendix1/Appendix1.aux)
-)
+(./Chapter1/Chapter1.aux) (./Chapter2/Chapter2.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
@@ -387,16 +397,17 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
 LaTeX Font Info:    ... okay on input line 46.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
 LaTeX Font Info:    ... okay on input line 46.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count119
-\scratchdimen=\dimen122
+\scratchdimen=\dimen129
 \scratchbox=\box28
 \nofMPsegments=\count120
 \nofMParguments=\count121
 \everyMPshowfont=\toks22
 \MPscratchCnt=\count122
-\MPscratchDim=\dimen123
+\MPscratchDim=\dimen130
 \MPnumerator=\count123
 \makeMPintoPDFobject=\count124
 \everyMPtoPDFconversion=\toks23
@@ -415,7 +426,6 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box29
-Package backref Info: ** backref set up for natbib ** on input line 46.
 Package hyperref Info: Link coloring ON on input line 46.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -434,8 +444,10 @@ LaTeX Info: Redefining \nameref on input line 46.
 \@outlinefile=\write3
 \openout3 = `thesis.out'.
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 
-<ThesisFigs/Leeds_Crest.png, id=44, 301.125pt x 290.08376pt>
+<ThesisFigs/Leeds_Crest.png, id=52, 301.125pt x 290.08376pt>
 File: ThesisFigs/Leeds_Crest.png Graphic file (type png)
 
 <use ThesisFigs/Leeds_Crest.png>
@@ -505,67 +517,61 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 G
-      iven $N\in\mathbb{N}^{+}$ Dirac fermions, they can be represented by a...
-[1
-
-
-
-])pdfTeX warning (ext4): destination with the same identifier (name{page.2}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.69 \include{Chapter1/Chapter1}
-                                 [2]
-\openout2 = `Chapter2/Chapter2.aux'.
-
- (./Chapter2/Chapter2.tex
-Chapter 2.
-)pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.70 \include{Chapter2/Chapter2}
-                                 [3
+l.28 \end{equation}
+                    [1
 
 
 
 ]
-\openout2 = `Appendix1/Appendix1.aux'.
+<Chapter1/Chapter1Figs/PDF/1DSUPCHAIN.pdf, id=120, 364.97873pt x 72.59027pt>
+File: Chapter1/Chapter1Figs/PDF/1DSUPCHAIN.pdf Graphic file (type pdf)
 
- (./Appendix1/Appendix1.tex
-Appendix A.
-pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
+<use Chapter1/Chapter1Figs/PDF/1DSUPCHAIN.pdf>
+Package pdftex.def Info: Chapter1/Chapter1Figs/PDF/1DSUPCHAIN.pdf used on input
+ line 39.
+(pdftex.def)             Requested size: 237.23335pt x 47.1831pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.93 \end{verbatim}
-                    [4
+l.57 \end{align}
+                 [2 <./Chapter1/Chapter1Figs/PDF/1DSUPCHAIN.pdf>])pdfTeX warnin
+g (ext4): destination with the same identifier (name{page.3}) has been already 
+used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.69 \include{Chapter1/Chapter1}
+                                 [3]pdfTeX warning (ext4): destination with the
+ same identifier (name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.69 \include{Chapter1/Chapter1}
+                                 [4]
+\openout2 = `Chapter2/Chapter2.aux'.
 
-
-
-]pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has
+ (./Chapter2/Chapter2.tex
+Chapter 2.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.93 \end{verbatim}
-                    [5])pdfTeX warning (ext4): destination with the same identi
-fier (name{page.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.76 \include{Appendix1/Appendix1}
-                                   [6] (./thesis.bbl (./thesis.brf)
+l.70 \include{Chapter2/Chapter2}
+                                 [5
+
+
+
+] (./thesis.bbl (./thesis.brf)
 \tf@brf=\write6
 \openout6 = `thesis.brf'.
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
-pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.86 \end{document}
-                    [7
+                    [6
 
 
 ]
@@ -573,48 +579,43 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
  (./thesis.aux (./Dedication/dedication.aux)
 (./Acknowledgement/acknowledgement.aux) (./Abstract/abstract.aux)
 (./Abbreviations/Abbreviations.aux) (./Chapter1/Chapter1.aux)
-(./Chapter2/Chapter2.aux) (./Appendix1/Appendix1.aux))
+(./Chapter2/Chapter2.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
-
-
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: 38472EF4B0C27B12F0FFB3C88D3D93A6;617
-(rerunfilecheck)             After:  D9A5D73861F7CA9610A229ED789DB369;698.
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 68259C2882B23CDB8BBF0F497D2E4046;855.
 Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: C921378D31B76248691D9DFF1F7FEED6;52.
+(rerunfilecheck)             Checksum: CD92A651677D2A4100DD0D0257D81DF8;109.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
  ) 
 Here is how much of TeX's memory you used:
- 7723 strings out of 493304
- 110273 string characters out of 6139871
- 209305 words of memory out of 5000000
- 10966 multiletter control sequences out of 15000+600000
- 11872 words of font info for 44 fonts, out of 8000000 for 9000
+ 8453 strings out of 493304
+ 125518 string characters out of 6139871
+ 224273 words of memory out of 5000000
+ 11680 multiletter control sequences out of 15000+600000
+ 15720 words of font info for 57 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 39i,12n,45p,507b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (14 pages, 175533 bytes).
+ 39i,12n,45p,589b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis.pdf (13 pages, 208282 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 234 PDF objects out of 1000 (max. 8388607)
+ 197 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 107 words of extra memory for PDF output out of 10000 (max. 10000000)
 

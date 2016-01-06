@@ -36,7 +36,7 @@
 \usepackage[english]{babel}
 \usepackage[usenames, dvipsnames]{color}
 \usepackage[perpage]{footmisc}
-\usepackage[round, sort, numbers, authoryear]{natbib}
+%\usepackage[round, sort, numbers, authoryear]{natbib}
 \usepackage{ifthen}
 \usepackage{ifpdf}
 \usepackage{subfigure}
