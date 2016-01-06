@@ -9,22 +9,39 @@
 
 \section{Introduction}
 
-Ever advancing developments in computational power....
+Defining and distinguishing phases of matter has been a continuing effort by physicists for many years. 
 
-\begin{figure}[htbp]
-\begin{center}
-  \mbox{
-     \subfigure[]{{\includegraphics[width=3.2in, angle=-0]{ScaleCartoon/ScaleCartoon}}}
-     \subfigure[]{{\includegraphics[width=1.6in, angle=-0]{ScaleCartoon/ScaleCartoon}}}
-       }
-   \caption{Simulation Scale Cartoon \citep{nielsen2004cgm}.}
-   \label{fig:Simscale}
-\end{center}
-\end{figure}
+\section{Free Fermion Systems}
 
-\subsection{Background}
+\subsection{Dirac Fermions}
+The basic constituent of fermionic systems is the Dirac fermion. In the language of quantum field theory, a Dirac fermion can be represented by a second quantised field operator $a$, called the annihilation operator, and its conjugate partner $a^{\da}_{i}$, called the creation operator. They obey the anticommutation relations $\{a,a^{\da}\}=1$ and $\{a^{(\da)},a^{(\da)}\}=0$. These operators act on a number state, also known as a Fock state, in the following way
+\begin{align}
+    &a\ket{0}=0 &a^{\da}\ket{0}=\ket{1}\nn\\
+    &a\ket{1}=\ket{0} &a^{\da}\ket{1}=0
+\end{align}
 
+\noi which follow from the commutation relations. A general state of a system consisting of a single Dirac fermion can be written in the form 
+\begin{equation}
+    \ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1},
+\end{equation}
 
+\noi where $\alpha_{0},\alpha_{1}\in\mathbb{C}$.\\
 
+Given $N\in\mathbb{N}^{+}$ Dirac fermions, they can be represented by a set of second quantised fermionic field operators $\{a_{i}\}$ and their conjugate partners $\{a_{i}^{\da}\}$, where $i=1,...,N$. They obey the following commutation relations
+\begin{align}
+    &\{a_{i},a_{j}^{\da}\}=\delta_{ij} &\{a_{i}^{(\da)},a_{j}^{(\da)}\}
+\end{align}
+    
+\noi where $\delta_{ij}$ Kronercker delta function. These operators act on a tensor product of Fock states. A general state of the fermionic system, $\ket{\psi}$ can be written as
+\begin{equation}
+    \ket{\psi}=\sum_{n_{i}=0,1}\Bigg(\alpha_{n_{1},...,n_{N}}\bigotimes_{i=1}^{N}\ket{n_{i}}\Bigg),
+\end{equation}
+
+\noi where $\alpha_{n_{1},...,n_{N}}\in\mathbb{C}$ and
+\begin{equation}
+    \bigotimes_{i=1}^{N}\ket{n_{i}}=\Bigg(\bigotimes_{i=1}^{N}\big(a^{\da}_{i}\big)^{n_{i}}\Bigg)\Bigg(\bigotimes_{i=1}^{N}\ket{0}\Bigg).
+\end{equation}
+
+\subsection{Quadratic Hamiltonians}
 
 

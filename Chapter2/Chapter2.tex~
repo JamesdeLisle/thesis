@@ -1,0 +1,19 @@
+%=== Chapter One ===
+\chapter{Introduction}
+
+\ifpdf
+    \graphicspath{{Chapter1/Chapter1Figs/PNG/}{Chapter1/Chapter1/PDF/}{Chapter1/Chapter1Figs/}}
+\else
+    \graphicspath{{Chapter1/Chapter1Figs/EPS/}{Chapter1/Chapter1/}}
+\fi
+
+\section{Introduction}
+
+Defining and distinguishing phases of matter has been a continuing effort by physicists for many years. 
+
+\subsection{Background}
+
+
+
+
+
