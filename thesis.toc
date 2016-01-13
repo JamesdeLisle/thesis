@@ -4,12 +4,22 @@
 \contentsline {section}{\numberline {1.2}1D Topological Superconductor}{1}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}Dirac fermions}{1}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Real space tight-binding model}{2}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Momentum space and the Fourier tansform}{2}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.3}Momentum space and the Fourier tansform}{3}{subsection.1.2.3}
 \contentsline {subsection}{\numberline {1.2.4}Symmetries}{3}{subsection.1.2.4}
-\contentsline {subsection}{\numberline {1.2.5}Energy Spectrum and ground state}{3}{subsection.1.2.5}
+\contentsline {subsection}{\numberline {1.2.5}Energy Spectrum and ground state}{4}{subsection.1.2.5}
 \contentsline {subsection}{\numberline {1.2.6}Winding number}{5}{subsection.1.2.6}
-\contentsline {subsection}{\numberline {1.2.7}Majorana fermions and edge states}{5}{subsection.1.2.7}
-\contentsline {chapter}{\numberline {2}Decomposition of the Chern Number}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}Introduction}{7}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}The Chern Number}{7}{subsection.2.1.1}
-\contentsline {chapter}{References}{8}{appendix*.6}
+\contentsline {subsection}{\numberline {1.2.7}Majorana fermions and edge states}{6}{subsection.1.2.7}
+\contentsline {chapter}{\numberline {2}Decomposition of the Chern Number in 2D Systems}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}Chern number and winding numbers in two spatial dimensions}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}The Berry phase representation of $\nu _{\text {2D}}$}{9}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}The winding number representation of $\nu _{\text {2D}}$}{10}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Observability of the winding number}{11}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Breakdown of the winding number representation}{12}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Decomposition of the Chern number into subsystem winding numbers}{12}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Derivation for topological insulators}{12}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Subsystem winding numbers as physical observables}{15}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Derivation for superconductors}{17}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Examples}{18}{section.2.3}
+\contentsline {section}{\numberline {2.4}Experimental applications}{18}{section.2.4}
+\contentsline {section}{\numberline {2.5}Conclusions}{18}{section.2.5}
+\contentsline {chapter}{References}{19}{appendix*.7}

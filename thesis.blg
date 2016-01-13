@@ -11,44 +11,44 @@ The style file: Classes/prs.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: References/references.bib
-You've used 4 entries,
+You've used 5 entries,
             1872 wiz_defined-function locations,
-            534 strings with 4338 characters,
-and the built_in function-call counts, 883 in all, are:
-= -- 31
-> -- 44
+            541 strings with 4603 characters,
+and the built_in function-call counts, 1105 in all, are:
+= -- 40
+> -- 54
 < -- 0
-+ -- 14
-- -- 10
-* -- 89
-:= -- 112
-add.period$ -- 4
-call.type$ -- 4
++ -- 18
+- -- 12
+* -- 109
+:= -- 138
+add.period$ -- 5
+call.type$ -- 5
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 40
-empty$ -- 82
-format.name$ -- 14
-if$ -- 194
+cite$ -- 5
+duplicate$ -- 50
+empty$ -- 103
+format.name$ -- 17
+if$ -- 245
 int.to.chr$ -- 0
-int.to.str$ -- 4
+int.to.str$ -- 5
 missing$ -- 0
-newline$ -- 15
-num.names$ -- 4
-pop$ -- 22
+newline$ -- 18
+num.names$ -- 5
+pop$ -- 28
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 65
+skip$ -- 83
 stack$ -- 0
-substring$ -- 67
-swap$ -- 28
+substring$ -- 86
+swap$ -- 35
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 8
-width$ -- 5
-write$ -- 22
+while$ -- 10
+width$ -- 6
+write$ -- 27

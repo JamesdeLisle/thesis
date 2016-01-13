@@ -1,5 +1,5 @@
 %=== Chapter One ===
-\chapter{Decomposition of the Chern Number}
+\chapter{Decomposition of the Chern Number in 2D Systems}
 
 \ifpdf
     \graphicspath{{Chapter2/Chapter2Figs/PNG/}{Chapter2/Chapter2/PDF/}{Chapter2/Chapter2Figs/}}
@@ -7,11 +7,262 @@
     \graphicspath{{Chapter2/Chapter2Figs/EPS/}{Chapter2/Chapter2/}}
 \fi
 
-\section{Introduction}
+In this chapter we will address the problem of the measurement of the Chern number in two component systems \cite{delisle14}. In section \ref{sec:chernwind1species} we review the definitions and conventions associated with the Chern number and winding number of single species systems in two spatial dimensions. 
+
+\section{Chern number and winding numbers in two spatial dimensions}\label{sec:chernwind1species}
+
+The following analysis stands in both the superconducting and insulating cases, despite the derivation being slightly different. Where necessary, we present here the definitions and derivations in the context of insulating systems, and the superconducting case will be addressed separately. Translationally invariant lattice models in two spatial dimensions supporting $N=2$ species of fermion $a_{\alpha,\bp}$, with $\alpha=1,2$, can be written in the form \cite{}
+\begin{equation}\label{eqn:BDGHAM}
+    H = \sum_{p} \bpsi_{\bp}^{\da}h(\blam,\bp)\bpsi_{\bp},
+\end{equation}
+
+\noi where $\bpsi_{\bp}=\bpm a_{1,\bp} & a_{2,\bp} \epm^{\text{T}}$ and $\bp=\bpm p_{x}, & p_{y}\epm\in\text{BZ}$ where BZ is the Brillouin zone. $h(\blam,\bp)$ is an $2\times 2$ Hermitian matrix called the \emph{kernel Hamiltonian} where $\blam=\bpm \lambda_{1}, & ... \gap , & \lambda_{M}\epm\in\mathcal{M}^{M}$ such that $\mathcal{M}^{M}$ is in general an $M$-dimensional complex manifold we call \emph{parameter space}. The ground state of the system is given by $\ket{\Psi}=\prod_{\bp}\ket{\psi_{\bp}}$, which is defined in terms of the operators $a^{\da}_{\alpha,\bp}$ acting on the fermionic vacuum $\ket{0}\otimes\ket{0}$. The kernel Hamiltonian has a pair of eigenvectors, $\ket{\psi^{\pm}(\blam,\bp)}$, and eigenvalues, $E^{\pm}(\blam,\bp)$. Because the model is particle-hole symmetric, the spectrum is symmetric about zero energy. We take the system to be at \emph{half filling} by which we mean we make the ground state of the system by filling up the negative energy states so that the ground state of $h(\blam,\bp)$ is $\ket{\psi^{-}(\blam,\bp)}$. The Chern number, $\nu\in\mathbb{Z}$, that characterises the topological phase of the system is defined as
+\begin{equation}\label{eqn:CHERNPROJ}
+    \nutwo(\blam)=-\frac{i}{2\pi}\int_{\text{BZ}} d^{2}p \gap \text{tr}\Big(P_{\blam,\bp}\big[\partial_{p_{x}}P_{\blam,\bp},\partial_{p_{y}}P_{\blam,\bp}\big]\Big)
+\end{equation}
+
+\noi where $P_{\blam,\bp}=\ket{\psi^{-}(\blam,\bp)}\bra{\psi^{-}(\blam,\bp)}$ is the projector on the ground state of $h(\blam,\bp)$. This is not the only way we can write the Chern number.
+
+\subsection{The Berry phase representation of $\nutwo$}
+
+The Chern number can also be written in terms of the Berry phase accrued around the boundary of the BZ. To see this we take the projector definition of the Chern number \eqref{eqn:CHERNPROJ} and substitute in the definition of the projector $P_{\blam,\bp}$
+\begin{align}\label{eqn:BERRYDER1}
+    \nutwo(\blam)=&-\frac{i}{2\pi}\int_{\text{BZ}} d^{2}p \gap \bra{\psi^{-}(\blam,\bp)} \Big[ \ket{\partial_{p_{x}}\psi^{-}(\blam,\bp)}\bra{\psi^{-}(\blam,\bp)} \nn\\
+                  &+ \ket{\psi^{-}(\blam,\bp)}\bra{\partial_{p_{x}}\psi^{-}(\blam,\bp)},\ket{\partial_{p_{y}}\psi^{-}(\blam,\bp)}\bra{\psi^{-}(\blam,\bp)} \nn\\
+                  &+\ket{\psi^{-}(\blam,\bp)}\bra{\partial_{p_{x}}\psi^{-}(\blam,\bp)}\Big] \ket{\psi^{-}(\blam,\bp)}.
+\end{align}
+
+\noi $\ket{\psi^{-}(\blam,\bp)}$ is normalised and therefore $\partial_{\mu}\braket{\psi^{-}(\blam,\bp)|\psi^{-}(\blam,\bp)}=0$, with $\mu=p_{x},p_{y}$, such that
+\begin{equation}\label{eqn:BERRYDER2}
+    \braket{\partial_{\mu}\psi^{-}(\blam,\bp)|\psi^{-}(\blam,\bp)} = -\braket{\psi^{-}(\blam,\bp)|\partial_{\mu}\psi^{-}(\blam,\bp)}.
+\end{equation}
+
+\noi By expanding \eqref{eqn:BERRYDER1} and applying \eqref{eqn:BERRYDER2} we have
+\begin{equation}\label{eqn:BERRYDER3}
+    \nutwo(\blam)=-\frac{i}{2\pi}\int_{\text{BZ}} d^{2}p \gap \varepsilon_{\mu\nu}\braket{\partial_{p_{\mu}}\psi^{-}(\blam,\bp)|\partial_{p_{\nu}}\psi^{-}(\blam,\bp)}.
+\end{equation}
+
+\noi We recognise that the integrand of \eqref{eqn:BERRYDER3} is the Berry curvature $F(\blam,\bp)$
+\begin{equation}
+    F(\blam,\bp)=\varepsilon_{\mu\nu}\partial_{\mu}A_{\nu}=\varepsilon_{\mu\nu}\braket{\partial_{p_{\mu}}\psi^{-}(\blam,\bp)|\partial_{p_{\nu}}\psi^{-}(\blam,\bp)},
+\end{equation}
+
+\noi where $\bs{A}=\braket{\psi^{-}(\blam,\bp)|\bs{\partial}|\psi^{-}(\blam,\bp)}$ with $\bs{\partial}=\bpm \partial_{p_{x}},& \partial_{p_{y}}\epm$. Using Stokes' theorem we can write the Chern number as
+\begin{equation}\label{eqn:BERRYDEF}
+    \nutwo(\blam)=-\frac{i}{2\pi}\int_{\text{BZ}} d^{2}p \gap F(\blam,\bp) = -\frac{i}{2\pi}\oint_{\partial\text{BZ}} d\bp\cdot \bs{A},
+\end{equation}
+
+\noi where $\partial\text{BZ}$ is the boundary of the Brillouin zone.
+
+\subsection{The winding number representation of $\nutwo$}\label{sec:WINDNUMDER}
+
+Under the constraint that $\text{dim}[h(\bp)]=2$ it can be parametrised in terms of a normalised vector $\bshat(\blam,\bp):\text{BZ}\rightarrow S^{2}$
+\begin{equation}\label{eqn:SDEF}
+    h(\blam,\bp) = \norms\bshat(\blam,\bp)\cdot\bsig,
+\end{equation}
+
+\noi where $\bsig=\bpm \sigma^{x},&\sigma^{y},&\sigma^{z}\epm$. We can express $\nutwo(\blam)$ as the winding of $\bshat(\blam,\bp)$ over BZ. Using \eqref{eqn:SDEF} we can write the projector $P_{\blam,\bp}$ as
+\begin{equation}\label{eqn:PROJDEF}
+    P_{\blam,\bp}=\frac{1}{2}\big(\mathbb{I}-\bshat(\blam,\bp)\cdot\bsig\big),
+\end{equation}
+
+\noi where $\mathbb{I}$ is the identity matrix. By substituting \eqref{eqn:PROJDEF} into \eqref{eqn:CHERNPROJ} and employing the identities
+\begin{equation}
+    \big(\bs{a}\cdot\bsig\big)\big(\bs{b}\cdot\bsig\big) = \mathbb{I}\bs{a}\cdot\bs{b}+i\bsig\cdot\bs{a}\times\bs{b}
+\end{equation}
+
+\noi for two 3-vectors $\bs{a}$ and $\bs{b}$, and 
+\begin{equation}
+    \text{tr}\big(\sigma^{\alpha}\sigma^{\beta}\big)=2\delta_{\alpha\beta}; \gap\gap\gap \alpha,\beta=x,y,z,
+\end{equation}
+
+\noi we have
+\begin{align}\label{eqn:WINDDEF}
+    \nutwo(\blam)=&-\frac{i}{2\pi}\int_{\text{BZ}}d^{2}p\gap \text{tr}\Big(\ket{\psi^{-}(\blam,\bp)}\bra{\psi^{-}(\blam,\bp)}\frac{1}{4}\big[\partial_{p_{x}}\bshat(\blam,\bp)\cdot\bsig,\partial_{p_{y}}\bshat(\blam,\bp)\cdot\bsig\big]\Big)\nn\\
+    =&\frac{1}{4\pi}\int_{\text{BZ}}d^{2}p\gap \bshat(\blam,\bp) \cdot \big(\partial_{p_{x}}\bshat(\blam,\bp)\times\partial_{p_{x}}\bshat(\blam,\bp)\big)\nn\\
+    \equiv & \tilde{\nu}_{\text{2D}}(\blam)
+\end{align}
+
+\noi As the BZ is spanned, $\bshat(\blam,\bp)$ winds around the sphere $S^{2}$ an integer number of times. If $\nutwo(\blam)\neq0$ we say that the system is in a topological phase.\\
+
+There also exists a direct link between the winding number \eqref{eqn:WINDDEF} and Berry phase \eqref{eqn:BERRYDEF} represenations which is shown in appendix \ref{}.
+
+\subsection{Observability of the winding number}
+
+The winding number is of particular interest as it is directly observable. It is easy to show that
+\begin{equation}\label{eqn:SVECEXP}
+    \bshat(\blam,\bp)=\braket{\psi^{-}(\blam,\bp)|\bsig|\psi^{-}(\blam,\bp)}=\braket{\psi_{\bp}|\bs{\Sigma}|\psi_{\bp}}
+\end{equation}
+
+\noi where $\bs{\Sigma}=\bpsi_{\bp}^{\da}\bsig\bpsi_{\bp}$ are the second quantised representations of the Pauli operators explicitly given by
+\begin{align}\label{eqn:SINGLEOBS}
+    \Sigma^{x}=&a_{1,\bp}^{\da}a_{2,\bp}+a^{\da}_{2,\bp}a_{1,\bp},\nn\\
+    \Sigma^{y}=&-ia_{1,\bp}^{\da}a_{2,\bp}+ia^{\da}_{2,\bp}a_{1,\bp},\nn\\
+    \Sigma^{z}=&a_{1,\bp}^{\da}a_{1,\bp}-a^{\da}_{2,\bp}a_{2,\bp}
+\end{align}  
+
+In systems of cold atom systems, by studying how the cloud of atoms expands when the trap is switched off, one can obtain a set of time of flight images from which one can extract the expectation values of the operators $a_{\bp}^{\da}a_{\bp}$ and $b_{\bp}^{\da}b_{\bp}$. As such the $\sigma^{z}$ component of \eqref{eqn:SVECEXP} can be measured and the $\sigma^{x,y}$ components can be obtained through suitable rotations. 
+
+\subsection{Breakdown of the winding number representation}
+
+If the number of species of fermion in the system $N>2$ then $h(\blam,\bp)$ can no longer be expanded in the Pauli basis. We can choose to expand it in terms of some higher dimensional basis of matrices,  then however $\text{dim}[\bshat(\blam,\bp)]>3$ and the derivation of the winding number in sec. \ref{sec:WINDNUMDER} is no longer sound. While it would, in principle, be possible to construct the components of some higher dimensional $\bshat(\blam,\bp)$ from time of flight images, we no longer know how to reconstruct the Chern number from them.
+
+\section{Decomposition of the Chern number into subsystem winding numbers}
+
+We now present the analytic argument for decomposing the Chern number as a sum of winding numbers associated with each subsystem. We present first present the argument for topological insulators that preserve particle number and then show that it also holds for parity conserving topological superconductors.
+
+\subsection{Derivation for topological insulators}
+
+Consider a system with four different species of fermion $a_{1}$, $a_{2}$, $b_{1}$, and $b_{2}$ where the $a/b$ bi-partition can correspond to a number of different physical distinctions (e.g. spin degrees of freedom, atomic levels, different sectors of some discrete symmetry). Assuming translational invariance and periodic boundary conditions we can write the Hamiltonian as \eqref{eqn:BDGHAM} with $\bpsi_{\bp}=\bpm a_{1,\bp} & a_{2,\bp} & b_{1,\bp} & b_{2,\bp} \epm ^{\text{T}}$. A general state in the Hilbert space of the system can be written as
+\begin{equation}\label{eqn:GENSTATE}
+    \ket{\Psi}=\prod_{\bp}\Bigg(\sum_{n^{j}_{i,\bp}=0,1} \alpha_{n^{a}_{1,\bp},n^{a}_{2,\bp},n^{b}_{1,\bp},n^{b}_{2,\bp}}(\blam,\bp)\ket{n^{a}_{1,\bp},n^{a}_{2,\bp},n^{b}_{1,\bp},n^{b}_{2,\bp}}\Bigg),
+\end{equation}
+
+\noi where we have expressed the state in the occupational basis
+\begin{equation}\label{eqn:BASIS}
+    \ket{n^{a}_{1,\bp},n^{a}_{2,\bp},n^{b}_{1,\bp},n^{b}_{2,\bp}}=\big(a^{\da}_{1,\bp}\big)^{n^{a}_{1,\bp}}\big(a^{\da}_{2,\bp}\big)^{n^{a}_{2,\bp}}\big(b^{\da}_{1,\bp}\big)^{n^{b}_{1,\bp}}\big(b^{\da}_{2,\bp}\big)^{n^{b}_{1,\bp}}\ket{0000}.
+\end{equation}
+
+\noi Here $\{n^{j}_{i,\bp}\}=0,1$ are the fermionic occupation numbers and $\ket{0000}$ is the fermionic vacuum. The eigenstates of \eqref{eqn:BDGHAM} will be of the form \eqref{eqn:GENSTATE} with the further condition of normalisation, i.e. $\sum_{n^{j}_{i,\bp}=0,1}\big|\alpha_{n^{a}_{1,\bp},n^{a}_{2,\bp},n^{b}_{1,\bp},n^{b}_{2,\bp}}(\blam,\bp)\big|^{2}=1$.\\
+
+As stated previously, we restrict the system to a fixed particle number, i.e. $\big[H,N\big]=0$ where $N=\sum_{\bp,\alpha=1,2}\big(a^{\da}_{\alpha,\bp}a_{\alpha,\bp}+b^{\da}_{\alpha,\bp}b_{\alpha,\bp}\big)$. Furthermore, we fix the system to be at half filling, which means that the ground state $\ket{\psi_{\bp}}$ satisfies the condition $\sum_{i,j}n^{j}_{i,\bp}=2$. This restriction means that a complete local basis for each momentum component of the ground state is given by
+\begin{equation}
+    \big\{\ket{1100},\ket{1010},\ket{1001},\ket{0110},\ket{0101},\ket{0011}\big\}.
+\end{equation}
+
+\noi Now we can divide the ground state into two orthogonal subspaces
+\begin{align}
+    \ket{\psi_{\bp}}=&A\Big|\sum_{i=1,2}n^{a}_{i,\bp}:\text{even};\sum_{i=1,2}n^{b}_{i,\bp}:\text{even}\Big> +B\Big|\sum_{i=1,2}n^{a}_{i,\bp}:\text{odd};\sum_{i=1,2}n^{b}_{i,\bp}:\text{odd}\Big>\nn\\
+    \equiv&A\ket{e;e}+B\ket{o;o},
+\end{align}
+
+\noi where $\sum_{i=1,2}n^{j}_{i,\bp}$ are either both even or both odd and $|A|^{2}+|B|^{2}=1$. The next step is to perform a Schmidt decomposition on each part of the state, $\ket{e;e}$ and $\ket{o;o}$, which can be written
+\begin{align}\label{eqn:SCHMIDT}
+    \ket{e;e}=&\cos\theta_{e}\ket{a_{e}}\otimes\ket{b_{e}} + \sin\theta_{e}\ket{\tilde{a}_{e}}\otimes\ket{\tilde{b}_{e}},\nn\\
+    \ket{o;o}=&\cos\theta_{o}\ket{a_{o}}\otimes\ket{b_{o}} + \sin\theta_{o}\ket{\tilde{a}_{o}}\otimes\ket{\tilde{b}_{o}},
+\end{align}
+
+\noi where $\theta_{e},\theta_{o}\in[0,\pi/2)$ ensuring that the Schmidt coefficients are non-negative. We stipulate that the states $\ket{a_{e/o}}\ket{b_{e/o}}$ are written in the same basis as \eqref{eqn:BASIS}. The states in \eqref{eqn:SCHMIDT} obey the orthogonality conditions $\braket{a_{e/o}|\tilde{a}_{e/o}}=0$ and $\braket{b_{e/o}|\tilde{b}_{e/o}}=0$. More explicitly we have
+\begin{align}\label{subsystems}
+\ket{a_{o}}&=\left(\alpha_{01}a^{\da}_{2,\bp}+\alpha_{10}a^{\da}_{1,\bp}\right)\ket{00}, \quad &\ket{\tilde{a}_{o}}=\left(\alpha^{*}_{10}a^{\da}_{2,\bp}-\alpha^{*}_{01}a^{\da}_{1,\bp}\right)\ket{00},\nn\\
+\ket{b_{o}}&=\left(\beta_{01}b^{\da}_{2,\bp}+\beta_{10}b^{\da}_{1,\bp}\right)\ket{00}, \quad &\ket{\tilde{b}_{o}}=\left(\beta^{*}_{10}b^{\da}_{2,\bp}-\beta^{*}_{01}b^{\da}_{1,\bp}\right)\ket{00}
+\end{align}
+
+\noi and
+\begin{align}
+\ket{a_{e}}&=e^{i\phi_{a}}\ket{00}, \quad &\ket{\tilde{a}_{e}}&=e^{i\tilde{\phi}_{a}}a_{1,\bp}^{\da}a_{2,\bp}^{\da}\ket{00},\nn\\
+\ket{b_{e}}&=e^{i\phi_{b}}b_{1,\bp}^{\da}b_{2,\bp}^{\da}\ket{00}, \quad &\ket{\tilde{b}_{e}}&=e^{i\tilde{\phi}_{b}}\ket{00},
+\end{align}
+
+\noi where $|\alpha_{01}|^{2}+|\alpha_{10}|^{2}=|\beta_{01}|^{2}+|\beta_{10}|^{2}=1$. The phases $\phi_{a/b}$ and $\tilde{\phi}_{a/b}$ are in general non-zero however, after multiplying $\ket{\psi_{\bp}}$ by a global phase of $e^{-i(\phi_{a}+\phi_{b})}$, we can transfer them to the $\ket{o;o}$ subspace via a $U(1)$ local gauge transformation given by
+\begin{equation}
+    a^{\da}_{1,\bp}\rightarrow e^{-i(\tilde{\phi}_{a}+\tilde{\phi}_{b}-\phi_{a}-\phi_{b})}a^{\da}_{1,\bp}.
+\end{equation}
+
+\noi After this transformation the only momentum dependence in the $\ket{e;e}$ subspace is in the real and positive Schmidt coefficients $\cos\theta_{e}$ and $\sin\theta_{e}$. Having preparaed the state we can now write $\nutwo(\blam)$
+\begin{equation}
+    \nutwo(\blam)=-\frac{i}{2\pi}\oint_{\partial BZ} A^{2}\braket{e;e|\bs{\partial}|e;e}\cdot d\bp-\frac{i}{2\pi}\oint_{\partial BZ} B^{2}\braket{o;o|\bs{\partial}|o;o}\cdot d\bp
+\end{equation}
+
+\noi where terms containing $A\bs{\partial}A$ or $B\bs{\partial}B$ do not contribute because $A\bs{\partial}A+B\bs{\partial}B=\bs{\partial}(A^{2}+B^{2})/2=0$ which follows from the reality condition on $A$ and $B$. Direct evaluation of the integrand in the $\ket{e;e}$ case finds it to be zero because $\cos\theta_{e}\bs{\partial}\cos\theta_{e}+\sin\theta_{e}\bs{\partial}\sin\theta_{e}=\bs{\partial}(\cos^{2}\theta_{e}+\sin^{2}\theta_{e})/2=0$. Noting that $\braket{i_{o}|\bs{\partial}|i_{o}}=-\braket{\tilde{i}_{o}|\bs{\partial}|\tilde{i}_{o}}$ and using the positivity and normalisation of the Schmidt coefficients, a direct evaluation gives
+\begin{equation}\label{eqn:SUMBERRY}
+    \nutwo(\blam)=-\frac{i}{2\pi}\sum_{i=a,b}\oint_{\partial BZ} S\braket{i_{o}|\bs{\partial}|i_{o}}\cdot d\bp, \quad S=|B|^{2}T,
+\end{equation}
+
+\noi where $T=\cos^{2}\theta_{o}-\sin^{2}\theta_{o}$ is a measure of the entanglement between the $a$ and $b$ subsystems.\\
+
+The Chern number is now written as a sum of exclusive contributions from each subsystem. If $S=1$ then \eqref{eqn:SUMBERRY} is simply a sum of Berry phases associated with each subsystem which can, by \eqref{eqn:WINDDEF}, be written as a sum of winding numbers of a pair of vectors $\bs{\hat{s}}_{a}(\blam,\bp)$ and $\bs{\hat{s}}_{b}(\blam,\bp)$. However as we shall see that the decomposition only fails when $S\rightarrow0$, when the subsystems are maximally entangled. In section \ref{sec:EXAMPLES} we present examples that show that the method only diverges from the theoretical values when $T\rightarrow 0$.
+
+\subsection{Subsystem winding numbers as physical observables}
+
+We will now construct the subsystem winding numbers as a function of two vectors $\bs{\hat{s}}_{a}(\blam,\bp)$ and $\bs{\hat{s}}_{b}(\blam,\bp)$, which are themselves given in terms of the expectation values of the ground state, $\ket{\psi_{\bp}}$, with some set of observable operators associated with each subsystem. In analogy with \eqref{eqn:SINGLEOBS} we can construct the observables associated with the $a$ and $b$ subsystems, $\bs{\Sigma}_{a}=\bpm \Sigma_{a}^{x}, & \Sigma_{a}^{y}, & \Sigma_{a}^{z}\epm $ and $\bs{\Sigma}_{b}=\bpm \Sigma_{b}^{x}, & \Sigma_{b}^{y}, & \Sigma_{b}^{z}\epm$, and they are given explicitly by
+\begin{align}\label{eqn:MULTIOBS}
+    \Sigma^{x}_{a}=&a_{1,\bp}^{\da}a_{2,\bp}+a^{\da}_{2,\bp}a_{1,\bp} &\Sigma^{x}_{b}&=b_{1,\bp}^{\da}b_{2,\bp}+b^{\da}_{2,\bp}b_{1,\bp}\nn\\
+    \Sigma^{y}_{a}=&-ia_{1,\bp}^{\da}a_{2,\bp}+ia^{\da}_{2,\bp}a_{1,\bp} &\Sigma^{y}_{b}&=-ib_{1,\bp}^{\da}b_{2,\bp}+ib^{\da}_{2,\bp}b_{1,\bp}\nn\\
+    \Sigma^{z}_{a}=&a_{1,\bp}^{\da}a_{1,\bp}-a^{\da}_{2,\bp}a_{2,\bp} &\Sigma^{z}_{b}&=b_{1,\bp}^{\da}b_{1,\bp}-b^{\da}_{2,\bp}b_{2,\bp}
+\end{align}
+
+\noi Now we can calculate the expectation values
+\begin{equation}
+\braket{\psi_{\bp}|\bs{\Sigma}_{i}|\psi_{\bp}} = |A|^{2}\braket{e;e|\bs{\Sigma}_{i}|e;e}+ |B|^{2}\braket{o;o|\bs{\Sigma}_{i}|o;o}
+\end{equation}
+
+\noi where cross terms between the even and odd subspaces do not appear since the operators given in \eqref{eqn:MULTIOBS} conserve particle number. By direct evaluation of the $\ket{e;e}$ term we see that it vanishes. Evaluation of the $\ket{o;o}$ term gives
+\begin{equation}
+    \braket{o;o|\bs{\Sigma}_{i}|o;o}=\cos^{2}\theta_{o}\braket{i_{o}|\bs{\Sigma}_{i}|i_{o}} + \sin^{2}\theta_{o}\braket{\tilde{i}_{o}|\bs{\Sigma}_{i}|\tilde{i}_{o}}=T\braket{i_{o}|\bs{\Sigma}_{i}|i_{o}}
+\end{equation}
+
+\noi where we have used the tracelessness of the $\bs{\Sigma}_{i}$ operators which implies $\braket{\tilde{i}_{o}|\bs{\Sigma}_{i}|\tilde{i}_{o}}=-\braket{i_{o}|\bs{\Sigma}_{i}|i_{o}}$. Each case is explicitly given by 
+\begin{align}\label{eqn:MULTISVEC1}
+    \braket{\psi_{\bp}|\bs{\Sigma}_{a}|\psi_{\bp}}&=S\braket{\psi_{a}(\bp)|\bsig|\psi_{a}(\bp)}\nn\\
+    \braket{\psi_{\bp}|\bs{\Sigma}_{b}|\psi_{\bp}}&=S\braket{\psi_{b}(\bp)|\bsig|\psi_{b}(\bp)},
+\end{align}
+
+\noi where $\ket{\psi_{a}(\bp)}=\bpm \alpha_{01},&\alpha_{10}\epm^{\text{T}}$ and $\ket{\psi_{b}(\bp)}=\bpm \beta_{01},&\beta_{10}\epm^{\text{T}}$. We can normalise the vectors given in \eqref{eqn:MULTISVEC1} and relabel them as
+\begin{equation}
+    \bs{\hat{s}}_{i}(\bp)=\frac{\bs{s}_{i}(\bp)}{|\bs{s}_{i}(\bp)|}=\braket{\psi_{i}(\bp)|\bsig|\psi_{i}(\bp)},
+\end{equation}
+
+\noi where $|\bs{s}_{i}(\bp)|=|B|^{2}|T|^{2}$. In much the same way as presented in \ref{sec:chernwind1species} we can define subsystem Chern numbers for the $\ket{i_{o}}$ states as Berry phases
+\begin{equation}\label{eqn:MULTIBERRY}
+    \nu_{\text{2D}}^{i}=-\frac{i}{2\pi}\oint_{\partial \text{BZ}}\braket{i_{o}|\bs{\partial}|i_{o}}\cdot d\bp
+\end{equation}
+
+\noi or as subsystem winding numbers
+\begin{equation}\label{eqn:MULTIWIND}
+    \nu_{\text{2D}}^{i} =\frac{1}{4\pi}\int_{\text{BZ}} d^{2}p\gap \bs{\hat{s}}_{i}(\bp)\cdot\big(\partial_{p_{x}}\bs{\hat{s}}_{i}(\bp)\times\partial_{p_{y}}\bs{\hat{s}}_{i}(\bp)\big)
+\end{equation}
+
+\noi We can view $\ket{\psi_{i}(\bp)}$ as the ground state of some fictitious kernel Hamiltonian $h_{i}(\blam,\bp)=\bs{\hat{s}}_{i}(\bp)\cdot\bsig$. We have shown that each subsystem Berry phase \eqref{eqn:MULTIBERRY} is proportional to its corresponding subsystem winding number \eqref{eqn:MULTIWIND} and that the winding numbers are physically observable. We now show that, with slight modifications, the above method applies to topological superconductors that conserve particle parity.
+
+\subsection{Derivation for superconductors}
+
+Again we take the Hamiltonian of the system to be \eqref{eqn:BDGHAM}, but now the spinor takes the form $\bpsi_{\bp}=\bpm a_{\bp} & a_{-\bp}^{\da} & b_{\bp} & b_{-\bp}^{\da}\epm ^{\text{T}}$. A general state in the Hilbert space can be written as in \eqref{eqn:GENSTATE} but with the Fock space ordered as
+\begin{equation}
+    \ket{n^{a}_{\bp},n^{a}_{-\bp},n^{b}_{\bp},n^{b}_{-\bp}}=\big(a_{\bp}^{\da}\big)^{n^{a}_{\bp}}\big(a_{-\bp}^{\da}\big)^{n^{a}_{-\bp}}\big(b_{\bp}^{\da}\big)^{n^{b}_{\bp}}\big(b_{-\bp}^{\da}\big)^{n^{b}_{-\bp}}\ket{0000}
+\end{equation}
+
+\noi Superconductors only preserve total parity, i.e. $\big[H,P\big]=0$ with $P=\text{exp}\Big(i\pi\sum_{\bp}\big(a^{\da}_{\bp}a_{\bp}+b_{\bp}^{\da}b_{\bp}\big)\Big)=P_{a}P_{b}$, while subsystem parities, $P_{a}$ and $P_{b}$, are not independently conserved. Without loss of generality we assume that the ground state is in the total even parity sector. This means that the subsystems are correlated such that $P_{a}=P_{b}$, which in turn means that the ground state complies with the condition of overall momentum. Under these conditions the ground state is given in the basis spanned by the states
+\begin{equation}
+    \big\{ \ket{0000},\ket{0011},\ket{1100},\ket{1111},\ket{0110},\ket{1001}\big\}.
+\end{equation}
+
+\noi As in the insulating case we divide the ground state into even and odd subspaces
+\begin{equation}
+    \ket{\psi_{\bp}}=A\ket{e;e}+B\ket{o;o}.
+\end{equation}
+
+\noi Performing the Schmidt decomposition between the $a$ and $b$ subspaces in this parity sector we obtain a general expression which has the same form as \eqref{eqn:SCHMIDT} but with the Schmidt bases given by
+\begin{align}\label{eqn:SUPERBASE}
+    \ket{a_{e}}&=\left(\alpha_{00}+\alpha_{11}a^{\da}_{\bp}a_{-\bp}^{\da}\right)\ket{00}, \quad &\ket{\tilde{a}_{e}}=\left(\alpha^{*}_{11}-\alpha^{*}_{00}a^{\da}_{\bp}a^{\da}_{-\bp}\right)\ket{00},\nn\\
+    \ket{b_{e}}&=\left(\beta_{00}+\beta_{11}b^{\da}_{\bp}b_{-\bp}^{\da}\right)\ket{00}, \quad &\ket{\tilde{b}_{e}}=\left(\beta^{*}_{11}-\beta^{*}_{00}b^{\da}_{\bp}b^{\da}_{-\bp}\right)\ket{00},\nn\\
+\end{align}
+
+\noi and
+\begin{align}
+    \ket{a_{o}}&=e^{i\phi_{a}}a_{-\bp}^{\da}\ket{00}, \quad &\ket{\tilde{a}_{o}}&=e^{i\tilde{\phi}_{a}}a_{\bp}^{\da}\ket{00},\nn\\
+    \ket{b_{o}}&=e^{i\phi_{b}}b_{\bp}^{\da}\ket{00}, \quad &\ket{\tilde{b}_{o}}&=e^{i\tilde{\phi}_{b}}b_{-\bp}^{\da}\ket{00}.
+\end{align}
+
+\noi In a similar way to the insulating case, all coefficients except those in the $\ket{o;o}$ subspace can be made real via $U(1)$ guage transformations. With this in mind, the decomposition of the Berry phase proceeds in the same way as the insulating case with the only difference being that the contribution from the $\ket{o;o}$ subspace vanishes and we are left with
+\begin{equation}\label{eqn:SUPERSUMBERRY}
+    \nutwo(\blam)=-\frac{i}{2\pi}\sum_{i=a,b}\oint_{\partial BZ} S\braket{i_{o}|\bs{\partial}|i_{o}}\cdot d\bp, \quad S=|A|^{2}T.
+\end{equation}
+
+\noi The observable operators, $\bs{\Sigma}_{i}$, used to evaluate the subsystem winding nubmers are now given by
+\begin{align}\label{eqn:SUPERMULTIOBS}
+    \Sigma^{x}_{a}=&a_{\bp}^{\da}a_{-\bp}^{\da}+a_{-\bp}a_{\bp}, &\Sigma^{x}_{b}&=b_{\bp}^{\da}b_{-\bp}^{\da}+b_{-\bp}b_{\bp},\nn\\
+    \Sigma^{y}_{a}=&-ia_{\bp}^{\da}a_{-\bp}^{\da}+ia_{-\bp}a_{\bp}, &\Sigma^{x}_{b}&=-ib_{\bp}^{\da}b_{-\bp}^{\da}+ib_{-\bp}b_{\bp},\nn\\
+    \Sigma^{z}_{a}=&a_{\bp}^{\da}a_{\bp}-a^{\da}_{-\bp}a_{-\bp}, &\Sigma^{z}_{b}&=b_{\bp}^{\da}b_{\bp}-b^{\da}_{-\bp}b_{-\bp}.
+\end{align}
 
 
+\section{Examples}\label{sec:EXAMPLES}
 
-\subsection{The Chern Number}
+\section{Experimental applications}
+
+\section{Conclusions}
+
 
 
 

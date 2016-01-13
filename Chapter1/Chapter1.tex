@@ -89,7 +89,7 @@ The model supports a pair of eigenvalues and eigenvectors, $E^{\pm}(\bs{\lambda}
         \includegraphics[scale=0.4]{Chapter1/Chapter1Figs/PDF/kitwind.pdf}
         \includegraphics[scale=0.4]{Chapter1/Chapter1Figs/PDF/kitgap.pdf}
     \end{center}
-    \caption{(Left) The energy gap, $\Delta E$ of the Kitaev wire as a function of the chemical potential, $\mu$, and the superconducting order parameter $\Delta$ with $t=1$. The data was obtained via exact diagonalisation of \eqref{eqn:KITKERN}. (Right) The winding number, $\nuone$, of the Kitaev wire. Each gapped phase is separated by a gappless line as depicted in the diagram of the gap on the left. The data was obtained via numerical evaluation of \eqref{eqn:1DWIND}. }
+    \caption{(Left) The energy gap, $\Delta E$ of the Kitaev wire as a function of the chemical potential, $\mu$, and the superconducting order parameter $\Delta$. The data was obtained via exact diagonalisation of \eqref{eqn:KITKERN}. (Right) The winding number, $\nuone$, of the Kitaev wire. Each gapped phase is separated by a gappless line as depicted in the diagram of the gap on the left. The data was obtained via numerical evaluation of \eqref{eqn:1DWIND}. }
     \label{fig:kitspec}
 \end{figure}
 
@@ -98,7 +98,7 @@ The model supports a pair of eigenvalues and eigenvectors, $E^{\pm}(\bs{\lambda}
     \Delta E(\bs{\lambda})=2\cdot\text{min}_{p}|E^{+}(\bs{\lambda},p)|.
 \end{equation}
 
-\noi In fig. \ref{fig:kitspec} (left) we plot $\Delta E(\bs{\lambda})$ as a function of $\mu$ and $\Delta$ and for $t=1$. The diagram is separated into four regions where $\Delta E(\bs{\lambda})\neq0$ which are separated by lines where $\Delta E(\bs{\lambda})=0$.\\
+\noi In fig. \ref{fig:kitspec} (left) we plot $\Delta E(\bs{\lambda})$ as a function of $\mu$ and $\Delta$. The diagram is separated into four regions where $\Delta E(\bs{\lambda})\neq0$ which are separated by lines where $\Delta E(\bs{\lambda})=0$.\\
 
 We take the system to be at half filling. This means that all of the negative energy states are occupied and the ground state is state associated with $E^{-}(p)$, $\ket{\psi_{gs}(p)}=\ket{\psi_{-}(p)}$. 
 
@@ -114,7 +114,7 @@ The topological phase of the system is determined by the winding number, $\nuone
     \nuone(\bs{\lambda}) = \int_{\text{BZ}} dp \gap \bs{\theta}(\bs{\lambda},p) \cdot\bs{\hat{u}_{\perp}}(\bs{\lambda},p),
 \end{equation}
 
-\noi where $\bs{\theta}(\bs{\lambda},p)=\big(\bs{\hat{s}}(\bs{\lambda},p)\times\partial_{p}\bs{\hat{s}}(\bs{\lambda},p)\big)$ and $(\bs{\hat{u}}_{\perp}(\bs{\lambda},p))_{i}=|\theta_{i}(\bs{\lambda},p)|/|\bs{\theta}(\bs{\lambda},p)|$. The integral \eqref{eqn:1DWIND} counts the number of times the vector $\bs{\hat{s}}(\bs{\lambda},p)$ winds around $S^{2}$. Fig. \ref{fig:kitspec} (right) depicts the winding number for the Kitaev wire as a function of $\mu$ and $\Delta$ with $t=1$. There are two distinct topological phases with $\nu=\pm1$ and two separated trivial phases with $\nu=0$. The winding number is invariant within each gapped phase, only changing value when $\Delta E(\bs{\lambda})\rightarrow0$. This can be understood by looking at the definition of $\bs{\hat{s}}(\bs{\lambda},p)$. It is easy to show that $|\bs{s}(\bs{\lambda},p)|=E^{\pm}(\bs{\lambda},p)$. Therefore when $\Delta E(\bs{\lambda})\rightarrow0$, $\bs{\hat{s}}(\bs{\lambda},p)$ becomes undefined. This discontinuity in $\nuone(\bs{\lambda})$ allows the invariant to change value.\\
+\noi where $\bs{\theta}(\bs{\lambda},p)=\big(\bs{\hat{s}}(\bs{\lambda},p)\times\partial_{p}\bs{\hat{s}}(\bs{\lambda},p)\big)$ and $(\bs{\hat{u}}_{\perp}(\bs{\lambda},p))_{i}=|\theta_{i}(\bs{\lambda},p)|/|\bs{\theta}(\bs{\lambda},p)|$. The integral \eqref{eqn:1DWIND} counts the number of times the vector $\bs{\hat{s}}(\bs{\lambda},p)$ winds around $S^{2}$. Fig. \ref{fig:kitspec} (right) depicts the winding number for the Kitaev wire as a function of $\mu$ and $\Delta$. There are two distinct topological phases with $\nu=\pm1$ and two separated trivial phases with $\nu=0$. The winding number is invariant within each gapped phase, only changing value when $\Delta E(\bs{\lambda})\rightarrow0$. This can be understood by looking at the definition of $\bs{\hat{s}}(\bs{\lambda},p)$. It is easy to show that $|\bs{s}(\bs{\lambda},p)|=E^{\pm}(\bs{\lambda},p)$. Therefore when $\Delta E(\bs{\lambda})\rightarrow0$, $\bs{\hat{s}}(\bs{\lambda},p)$ becomes undefined. This discontinuity in $\nuone(\bs{\lambda})$ allows the invariant to change value.\\
 
 \subsection{Majorana fermions and edge states}
 
@@ -129,6 +129,16 @@ A natural basis for describing topological superconductors is the Majorana basis
 \end{equation}
 
 \noi implying that $\gamma_{\alpha,j}^{2}=1$. We can rewrite \eqref{eqn:KITHAM} in the Majorana basis to get
-\begin{equation}
-    H = \sum_{j=1}^{N} \mu \gamma_{1,j}\gamma_{2,j} + \big(t + \Delta\big)\gamma_{2,j}\gamma_{1,j+1} + \big(-t+\Delta\big)\gamma_{1,j}\gamma_{2,j+1}
+\begin{equation}\label{eqn:1DMAJHAM}
+    H = \frac{i}{2}\sum_{j=1}^{N} \Big[\mu \gamma_{1,j}\gamma_{2,j} + \big(t + \Delta\big)\gamma_{2,j}\gamma_{1,j+1} + \big(-t+\Delta\big)\gamma_{1,j}\gamma_{2,j+1}\Big].
 \end{equation}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[scale=0.65]{Chapter1/Chapter1Figs/PDF/1DMAJ.pdf}
+    \end{center}
+    \caption{(Top) The Kitaev chain drawn in the Majorana basis. Each site $j$ supports two Majorana fermions $\gamma_{1,j}$ and $\gamma_{2,j}$. (Middle) The Majorana chain with $\mu>0$ and $\Delta=t=0$, leading to the Majoranas on the same site being paired together. This point in parameter space is in the trivial phase with $\nuone(\bs{\lambda})=0$. (Bottom) The Majorana chain with $\mu=0$ and $\Delta=t>0$, leading to Majoranas on adjacent sites being paired together. Due to the open boundary conditions, there are unpaired Majorana fermions at each end of the wire. }
+    \label{fig:MAJCHAIN}
+\end{figure}
+
+\noi Through judicious choices of $\mu$, $\Delta$ and $t$ we can eliminate different terms in \eqref{eqn:1DMAJHAM}. These different choices of the coupling configuration are shown in fig. \ref{fig:MAJCHAIN}. If we pick a point in parameter space that is in the trivial phase, as depicted in fig. \ref{fig:kitspec}, such as $\mu>0$ and $\Delta=t=0$ then \eqref{eqn:1DMAJHAM} becomes $H=\frac{i}{2}\sum_{j}\mu \gamma_{1,j}\gamma_{2,j}$ and the configuration becomes that of fig. \ref{fig:MAJCHAIN} (middle). However if we pick a point in the non-trivial phase, such as $\mu=0$ and $\Delta=t>0$, then \eqref{eqn:1DMAJHAM} becomes $H=it\sum_{j}\gamma_{2,j}\gamma_{1,j+1}$ and as depicted in fig. \ref{fig:MAJCHAIN} (bottom) we are left with two unpaired Majorana fermions, one at each end of the chain. These two Majoranas do not appear in the modified Hamiltonian.
